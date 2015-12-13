@@ -1,9 +1,4 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -58,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="header-top">
       		<div class="logo">
-				<a href="index.html"><h6>Online Furnish</h6><h2>Luxury</h2></a>
+				<a href="index.php"><h6>Online Furnish</h6><h2>Luxury</h2></a>
 			 </div>
 		   <div class="header_right">
 			 <ul class="social">
@@ -82,13 +77,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 </div>  
 		 <div class="about_box">
 			<ul class="login">
-				<li class="login_text"><a href="login.html">Login</a></li>
-				<li class="wish"><a href="checkout.html">Wish List</a></li>
+				<li class="login_text"><a href="login.php">Login</a></li>
+				<li class="wish"><a href="checkout.php">Wish List</a></li>
 				<div class='clearfix'></div>
 		    </ul>
 		    <div class="cart_bg">
 	   		 	  <ul class="cart">
-	   		 		 <a href="checkout.html">
+	   		 		 <a href="checkout.php">
 					    <h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
 					 </a>
 				     <h5 class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></h5>
@@ -96,8 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   </ul>
 	   		 	</div>
 			 <ul class="quick_access">
-				<li class="view_cart"><a href="checkout.html">View Cart</a></li>
-				<li class="check"><a href="checkout.html">Checkout</a></li>
+				<li class="view_cart"><a href="checkout.php">View Cart</a></li>
+				<li class="check"><a href="checkout.php">Checkout</a></li>
 				<div class='clearfix'></div>
 		     </ul>
 			<div class="search">
@@ -115,17 +110,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="menu_box">
 				   	  	<h3 class="menu_head">Menu</h3>
 				   	     <ul class="nav">
-					   	  	<li><a href="about.html">About</a></li>
-					   	  	<li><a href="about.html">Living Room</a></li>
-					   	  	<li><a href="about.html">Office Furniture</a></li>
-					   	  	<li><a href="about.html">Bean Bags</a></li>
-					   	  	<li><a href="about.html">Tables</a></li>
-					   	  	<li><a href="about.html">Sofas</a></li>
-					   	  	<li><a href="about.html">Wardrobes</a></li>
-					   	  	<li><a href="about.html">Beds</a></li>
-					   	  	<li><a href="typo.html">Typo</a></li>
-					   	  	<li><a href="about.html">Chairs</a></li>
-					   	  	<li><a href="about.html">Kids Beds</a></li>
+					   	  	<li><a href="about.php">About</a></li>
+					   	  	<li><a href="about.php">Living Room</a></li>
+					   	  	<li><a href="about.php">Office Furniture</a></li>
+					   	  	<li><a href="about.php">Bean Bags</a></li>
+					   	  	<li><a href="about.php">Tables</a></li>
+					   	  	<li><a href="about.php">Sofas</a></li>
+					   	  	<li><a href="about.php">Wardrobes</a></li>
+					   	  	<li><a href="about.php">Beds</a></li>
+					   	  	<li><a href="typo.php">Typo</a></li>
+					   	  	<li><a href="about.php">Chairs</a></li>
+					   	  	<li><a href="about.php">Kids Beds</a></li>
 					   	 </ul>
 			   	    </div>
 			   	    <div class="side_banner">
@@ -139,11 +134,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    <div class="dreamcrub">
 			   	 <ul class="breadcrumbs">
                     <li class="home">
-                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
                        <span>&gt;</span>
                     </li>
 					<li class="home">
-                       <a href="about.html" title="Go to Home Page">About</a>&nbsp;
+                       <a href="about.php" title="Go to Home Page">About</a>&nbsp;
                        <span>&gt;</span>
                     </li>        
                     <li class="home">&nbsp;
@@ -152,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>                   
                 </ul>
                 <ul class="previous">
-                	<li><a href="about.html">Back to Previous Page</a></li>
+                	<li><a href="about.php">Back to Previous Page</a></li>
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
@@ -341,36 +336,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-grid">
 				<h3>Category</h3>
 				<ul class="list1">
-				  <li><a href="index.html">Home</a></li>
-				  <li><a href="about.html">About us</a></li>
-				  <li><a href="about.html">Eshop</a></li>
-				  <li><a href="about.html">Features</a></li>
-				  <li><a href="about.html">New Collections</a></li>
-				  <li><a href="typo.html">Typo</a></li>
-				  <li><a href="contact.html">Contact</a></li>
+				  <li><a href="index.php">Home</a></li>
+				  <li><a href="about.php">About us</a></li>
+				  <li><a href="about.php">Eshop</a></li>
+				  <li><a href="about.php">Features</a></li>
+				  <li><a href="about.php">New Collections</a></li>
+				  <li><a href="typo.php">Typo</a></li>
+				  <li><a href="contact.php">Contact</a></li>
 				</ul>
 			</div>
 			<div class="footer-grid">
 				<h3>Our Account</h3>
 				<ul class="list1">
-				  <li><a href="login.html">Your Account</a></li>
-				  <li><a href="contact.html">Personal information</a></li>
-				  <li><a href="contact.html">Addresses</a></li>
+				  <li><a href="login.php">Your Account</a></li>
+				  <li><a href="contact.php">Personal information</a></li>
+				  <li><a href="contact.php">Addresses</a></li>
 				  <li><a href="#">Discount</a></li>
-				  <li><a href="checkout.html">Orders history</a></li>
-				  <li><a href="about.html">Search Terms</a></li>
+				  <li><a href="checkout.php">Orders history</a></li>
+				  <li><a href="about.php">Search Terms</a></li>
 				</ul>
 			</div>
 			<div class="footer-grid">
 				<h3>Our Support</h3>
 				<ul class="list1">
-				  <li><a href="contact.html">Site Map</a></li>
-				  <li><a href="about.html">Search Terms</a></li>
-				  <li><a href="about.html">Advanced Search</a></li>
-				  <li><a href="about.html">Mobile</a></li>
-				  <li><a href="contact.html">Contact Us</a></li>
-				  <li><a href="contact.html">Mobile</a></li>
-				  <li><a href="contact.html">Addresses</a></li>
+				  <li><a href="contact.php">Site Map</a></li>
+				  <li><a href="about.php">Search Terms</a></li>
+				  <li><a href="about.php">Advanced Search</a></li>
+				  <li><a href="about.php">Mobile</a></li>
+				  <li><a href="contact.php">Contact Us</a></li>
+				  <li><a href="contact.php">Mobile</a></li>
+				  <li><a href="contact.php">Addresses</a></li>
 				</ul>
 			</div>
 			<div class="footer-grid">
@@ -388,7 +383,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer_bottom">
 		<div class="container">
 			<div class="copy">
-			   <p>Copyright &copy; 2015 Luxury Furnish. All Rights Reserved . Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+			      <p>Copyright &copy; Sajavat Interiors. All Rights Reserved.</p>
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,4 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -83,14 +78,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="menu_box">
 				   	  	<h3 class="menu_head">Products</h3>
 				   	     <ul class="nav">
-					   	  	<li><a href="about.html">Beds</a></li>
-					   	  	<li><a href="about.html">Bed Side Tables</a></li>
-					   	  	<li><a href="about.html">Dining Tables</a></li>
-					   	  	<li><a href="about.html">TV Sets</a></li>
-					   	  	<li><a href="about.html">Sofas</a></li>
-					   	  	<li><a href="about.html">Dressers</a></li>
-					   	  	<li><a href="about.html">Bookshelf And Display Units</a></li>
-					   	  	<li><a href="typo.html">Tables</a></li>
+					   	  	<li><a href="about.php">Beds</a></li>
+					   	  	<li><a href="about.php">Bed Side Tables</a></li>
+					   	  	<li><a href="about.php">Dining Tables</a></li>
+					   	  	<li><a href="about.php">TV Sets</a></li>
+					   	  	<li><a href="about.php">Sofas</a></li>
+					   	  	<li><a href="about.php">Dressers</a></li>
+					   	  	<li><a href="about.php">Bookshelf And Display Units</a></li>
+					   	  	<li><a href="typo.php">Tables</a></li>
 					   	 </ul>
 			   	    </div>
 			   	 </div>
@@ -176,13 +171,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="footer-grid">
 				<h3>Category</h3>
 				<ul class="list1">
-				  <li><a href="index.html">Home</a></li>
-				  <li><a href="about.html">About us</a></li>
-				  <li><a href="about.html">Eshop</a></li>
-				  <li><a href="about.html">Features</a></li>
-				  <li><a href="about.html">New Collections</a></li>
-				  <li><a href="typo.html">Typo</a></li>
-				  <li><a href="contact.html">Contact</a></li>
+				  <li><a href="index.php">Home</a></li>
+				  <li><a href="about.php">About us</a></li>
+				  <li><a href="about.php">Eshop</a></li>
+				  <li><a href="about.php">Features</a></li>
+				  <li><a href="about.php">New Collections</a></li>
+				  <li><a href="typo.php">Typo</a></li>
+				  <li><a href="contact.php">Contact</a></li>
 				</ul>
 			</div>
 			<div class="footer-grid">
