@@ -1,4 +1,11 @@
-
+<?php
+session_start();
+if(isset($_SESSION['user']))
+{
+    header("location:index.html");
+}
+else {
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -118,17 +125,24 @@
 			   <div class="col-md-6 login-right">
 			  	<h3>REGISTERED CUSTOMERS</h3>
 				<p>If you have an account with us, please log in.</p>
-                                <form action="logic.php?val=login" method="POST">
+                                <form name="login_form" action="logic.php?val=login" method="POST">
 				  <div>
 					<span>Email Address<label>*</label></span>
-                                        <input type="text" required id="user_id" name="user_id"> 
+                                        <input type="text" placeholder="Name" name="txtuser" id="txtuser" required /> 
 				  </div>
 				  <div>
 					<span>Password<label>*</label></span>
-                                        <input type="password" required id="user_pass" name="user_pass"> 
+                                        <input type="password" placeholder="Abcd123" name="txtpass" id="txtpass" required/> 
 				  </div>
-				  <a class="forgot" href="forgot_pass.php">Forgot Your Password?</a>
-				  <input type="submit" value="Login">
+                                     <span>
+					<input type="checkbox" class="checkbox"> 
+					   Keep me signed in
+				    </span>
+				 
+				  <input type="submit" value="Login"><br>
+                                  <span>
+                                      <a class="forgot" href="retrieve.php">Forgot Your Password?</a>
+                                  </span>
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>
@@ -211,3 +225,4 @@
 	</div>
 </body>
 </html>		
+   <?php } ?>
