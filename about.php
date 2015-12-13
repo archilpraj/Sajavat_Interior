@@ -42,24 +42,13 @@
 	<div class="container">
 		<div class="header-top">
       		<div class="logo">
-				<a href="index.php"><h6>Online Furnish</h6><h2>Luxury</h2></a>
+				<a href="index.php"><h3>Sajavat</h3><h2>Interiors</h2></a>
 			 </div>
 		   <div class="header_right">
 			 <ul class="social">
 				<li><a href=""> <i class="fb"> </i> </a></li>
 				<li><a href=""><i class="tw"> </i> </a></li>
-				<li><a href=""><i class="utube"> </i> </a></li>
-				<li><a href=""><i class="pin"> </i> </a></li>
-				<li><a href=""><i class="instagram"> </i> </a></li>
-			 </ul>
-		    <div class="lang_list">
-			  <select tabindex="4" class="dropdown">
-				<option value="" class="label" value="">En</option>
-				<option value="1">English</option>
-				<option value="2">French</option>
-				<option value="3">German</option>
-			  </select>
-   			</div>
+                         </ul>
 			<div class="clearfix"></div>
           </div>
           <div class="clearfix"></div>
@@ -70,15 +59,6 @@
 				<li class="wish"><a href="checkout.php">Wish List</a></li>
 				<div class='clearfix'></div>
 		    </ul>
-		    <div class="cart_bg">
-	   		 	  <ul class="cart">
-	   		 		 <a href="checkout.php">
-					    <h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
-					 </a>
-				     <h5 class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></h5>
-				     <div class="clearfix"> </div>
-                  </ul>
-	   		 	</div>
 			 <ul class="quick_access">
 				<li class="view_cart"><a href="checkout.php">View Cart</a></li>
 				<li class="check"><a href="checkout.php">Checkout</a></li>
@@ -97,73 +77,18 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="menu_box">
-				   	  	<h3 class="menu_head">Menu</h3>
+				   	  	<h3 class="menu_head">Products</h3>
 				   	     <ul class="nav">
-					   	  	<li><a href="about.php">About</a></li>
-					   	  	<li><a href="about.php">Living Room</a></li>
-					   	  	<li><a href="about.php">Office Furniture</a></li>
-					   	  	<li><a href="about.php">Bean Bags</a></li>
-					   	  	<li><a href="about.php">Tables</a></li>
-					   	  	<li><a href="about.php">Sofas</a></li>
-					   	  	<li><a href="about.php">Wardrobes</a></li>
 					   	  	<li><a href="about.php">Beds</a></li>
-					   	  	<li><a href="typo.php">Typo</a></li>
-					   	  	<li><a href="about.php">Chairs</a></li>
-					   	  	<li><a href="about.php">Kids Beds</a></li>
+					   	  	<li><a href="about.php">Bed Side Tables</a></li>
+					   	  	<li><a href="about.php">Dining Tables</a></li>
+					   	  	<li><a href="about.php">TV Sets</a></li>
+					   	  	<li><a href="about.php">Sofas</a></li>
+					   	  	<li><a href="about.php">Dressers</a></li>
+					   	  	<li><a href="about.php">Bookshelf And Display Units</a></li>
+					   	  	<li><a href="typo.php">Tables</a></li>
 					   	 </ul>
 			   	    </div>
-			   	    <div class="category">
-			   	    	<h3 class="menu_head">Category Options</h3>
-			   	    	<ul class="category_nav">
-					   	  	<li><a href="#">Dining & Serving</a></li>
-					   	  	<li><a href="#">Storage</a></li>
-					   	  	<li><a href="#">Wall Decors</a></li>
-					   	  	<li><a href="#">Bed & living</a></li>
-					   	  	<li><a href="#">Office Use</a></li>
-					   	</ul>
-			   	    </div>
-			   	    <div class="category">
-			   	    	<h3 class="menu_head">Brand Options</h3>
-			   	    	<ul class="category_nav">
-					   	  	<li><a href="#">Century</a></li>
-					   	  	<li><a href="#">Henredon</a></li>
-					   	  	<li><a href="#">Marge Carson</a></li>
-					   	  	<li><a href="#">Schnadig</a></li>
-					   	  	<li><a href="#">Hillsdale</a></li>
-					   	  	<li><a href="#">Emerald Home</a></li>
-					   	  	<li><a href="#">Broyhill</a></li>
-					   	  	<li><a href="#">Hillsdale</a></li>
-					   	</ul>
-			   	    </div>
-			   	     <div class="tags">
-				    	<h4 class="tag_head">Tags Widget</h4>
-				         <ul class="tags_links">
-							<li><a href="#">Office</a></li>
-							<li><a href="#">Chairs</a></li>
-							<li><a href="#">Wood</a></li>
-							<li><a href="#">Metal</a></li>
-							<li><a href="#">Sizes</a></li>
-							<li><a href="#">Women</a></li>
-							<li><a href="#">Wardrobes</a></li>
-							<li><a href="#">Latest</a></li>
-							<li><a href="#">Kitchen</a></li>
-							<li><a href="#">Tables</a></li>
-							<li><a href="#">Modern</a></li>
-							<li><a href="#">Colors</a></li>
-							<li><a href="#">Shelves</a></li>
-							<li><a href="#">Stools</a></li>
-							<li><a href="#">Pouffes</a></li>
-					        <li><a href="#">Women</a></li>
-							<li><a href="#">Bedroom</a></li>
-						</ul>
-						<a href="#" class="link1">View all tags</a>
-				     </div>
-				     <div class="side_banner">
-					   <div class="banner_img"><img src="images/pic9.jpg" class="img-responsive" alt=""/></div>
-					   <div class="banner_holder">
-						  <h3>Now <br> is <br> Open!</h3>
-					   </div>
-				     </div>
 			  </div>
 			  <div class="col-md-9">
 			    <div class="dreamcrub">
@@ -412,17 +337,6 @@
 		 </div>
 		</div>
 	    </div>
-		<div class="container">
-			<div class="brands">
-				<ul class="brand_icons">
-					<li><img src='images/icon1.png' class="img-responsive" alt=""/></li>
-					<li><img src='images/icon2.png' class="img-responsive" alt=""/></li>
-					<li><img src='images/icon3.png' class="img-responsive" alt=""/></li>
-					<li><img src='images/icon4.png' class="img-responsive" alt=""/></li>
-					<li class="last"><img src='images/icon5.png' class="img-responsive" alt=""/></li>
-				</ul>
-			</div>
-	    </div>
 	    <div class="container">
 	      <div class="instagram_top">
 	      	<div class="instagram text-center">
@@ -446,8 +360,8 @@
 		  </div>
 	      <ul class="footer_social">			
 			<li><a href="#"><i class="tw"> </i> </a></li>
+                        <li></li>
 			<li><a href="#"> <i class="fb"> </i> </a></li>
-			<li><a href="#"><i class="pin"> </i> </a></li>
 			<div class="clearfix"></div>
 		   </ul>
 	    </div>
@@ -459,10 +373,8 @@
 				<ul class="list1">
 				  <li><a href="index.php">Home</a></li>
 				  <li><a href="about.php">About us</a></li>
-				  <li><a href="about.php">Eshop</a></li>
 				  <li><a href="about.php">Features</a></li>
 				  <li><a href="about.php">New Collections</a></li>
-				  <li><a href="typo.php">Typo</a></li>
 				  <li><a href="contact.php">Contact</a></li>
 				</ul>
 			</div>
@@ -472,31 +384,8 @@
 				  <li><a href="login.php">Your Account</a></li>
 				  <li><a href="contact.php">Personal information</a></li>
 				  <li><a href="contact.php">Addresses</a></li>
-				  <li><a href="#">Discount</a></li>
 				  <li><a href="checkout.php">Orders history</a></li>
-				  <li><a href="about.php">Search Terms</a></li>
 				</ul>
-			</div>
-			<div class="footer-grid">
-				<h3>Our Support</h3>
-				<ul class="list1">
-				  <li><a href="contact.php">Site Map</a></li>
-				  <li><a href="about.php">Search Terms</a></li>
-				  <li><a href="about.php">Advanced Search</a></li>
-				  <li><a href="about.php">Mobile</a></li>
-				  <li><a href="contact.php">Contact Us</a></li>
-				  <li><a href="contact.php">Mobile</a></li>
-				  <li><a href="contact.php">Addresses</a></li>
-				</ul>
-			</div>
-			<div class="footer-grid">
-				<h3>Newsletter</h3>
-				<p class="footer_desc">Nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat</p>
-				<div class="search_footer">
-				  <input type="text" class="text" value="Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Email';}">
-				  <input type="submit" value="Subscribe">
-				</div>
-				<img src="images/payment.png" class="img-responsive" alt=""/>
 			</div>
 			 <div class="clearfix"> </div>
 		</div>
@@ -504,9 +393,9 @@
 	<div class="footer_bottom">
 		<div class="container">
 			<div class="copy">
-			   <p>Copyright &copy; Sajavat Interiors. All Rights Reserved.</p>
+			   <p>Copyright &copy; 2015 Sajavat Interiors. All Rights Reserved.</p>
 			</div>
 		</div>
 	</div>
 </body>
-</html>		
+</html>
