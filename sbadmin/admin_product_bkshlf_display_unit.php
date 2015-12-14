@@ -93,7 +93,8 @@ if (!isset($_SESSION['admin_uname'])) {
                     {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
                         {
-                            var row = $(xmlhttp.responseText);
+                            var row = xmlhttp.responseText;
+                            alert(row);
                             $("#mt > tbody").append(row);
                         }
                     }
@@ -227,10 +228,10 @@ if (!isset($_SESSION['admin_uname'])) {
                                                     <th>Product Image</th>
                                                     <th>Price<br>INR <i class="fa fa-rupee"></i></th>
                                                     <th>Stock</th>
-                                                    <th>Color</th>
+                                                    <th>Shape</th>
                                                     <th>Material</th>
                                                     <th>Storage Type</th>
-                                                    <th>Size</th>
+                                                    <th>Floor Standing</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

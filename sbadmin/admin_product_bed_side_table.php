@@ -80,6 +80,7 @@ if (!isset($_SESSION['admin_uname'])) {
                 }
                 function disp()
                 {
+                    
                     var xmlhttp;
                     if (window.XMLHttpRequest)
                     {
@@ -91,9 +92,12 @@ if (!isset($_SESSION['admin_uname'])) {
                     }
                     xmlhttp.onreadystatechange = function ()
                     {
+                        
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
                         {
-                            var row = $(xmlhttp.responseText);
+                            //alert("0");
+                            var row =$(xmlhttp.responseText);
+                            //alert(row);
                             $("#mt > tbody").append(row);
                         }
                     }

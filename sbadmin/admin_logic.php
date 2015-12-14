@@ -36,7 +36,8 @@ function delete($id) {
 
 function disp_beds() {
     $connection_obj = mysqli_connect("localhost", "root", "", "sj_database") or die(mysql_error());
-    $qry = mysqli_query($connection_obj, "select * from product_bed");
+    $sql="select * from product_bed";
+    $qry = mysqli_query($connection_obj,$sql);
 
     while ($row = mysqli_fetch_array($qry)) {
         echo "<tr>";

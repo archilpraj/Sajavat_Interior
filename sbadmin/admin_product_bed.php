@@ -101,6 +101,21 @@ if (!isset($_SESSION['admin_uname'])) {
                     xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
                     xmlhttp.send();
                 }
+                function type()
+                {
+                    var xmlhttp=new XMLHttpRequest();
+                    xmlhttp.onreadystatechange= function ()
+                    {
+                        if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                            var row = $(xmlhttp.responseText);
+                            $("#mt > tbody").append(row);
+                        }
+                    }
+                    xmlhttp.open('GET','admin_func_check.php?val=disp_bed',true);
+                    xmlhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    xmlhttp.send();
+                }
             </script>
             <style type="text/css">
                 .table#stickyHeader thead {
@@ -222,7 +237,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                         <table class="table table-bordered table-hover table-striped" id="mt">
                                             <thead>
                                                 <tr>
-                                                    <th>Product ID</th>
+                                                    <th><a href="" onclick="type()">Product ID</a></th>
                                                     <th>Product Name</th>
                                                     <th>Product Image</th>
                                                     <th>Price<br>INR <i class="fa fa-rupee"></i></th>
