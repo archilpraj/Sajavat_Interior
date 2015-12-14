@@ -10,16 +10,18 @@ if($_GET['val']=='register')
     $email=$_POST['txtemail'];
     $fname=$_POST['txtfname'];
     $lname=$_POST['txtlname'];
+    
+    $state=$_POST['txtstate'];
+    $city=$_POST['txtcity'];
+   $pincode=$_POST['txtpincode'];
+    $address=$_POST['txtaddress'];
     $phone=$_POST['txtphone'];
-   // $state=$_POST['txtstate'];
-    //$city=$_POST['txtcity'];
-   // $pincode=$_POST['txtpincode'];
-    //$address=$_POST['txtaddress'];
 
-    $sql="INSERT INTO user (user_id, user_password, user_email, user_firstname, user_lastname, user_phone) VALUES ('$username','$password','$email','$fname','$lname','$phone')";
+    $sql="INSERT INTO user (user_id, user_password, user_email, user_firstname, user_lastname,user_address,user_city,user_state ,user_pincode, user_phone) VALUES ('$username','$password','$email','$fname','$lname','$address','$city','$state','$pincode','$phone')";
     // $sql="INSERT INTO user (user_id, user_password, user_email) VALUES ('$username','$password','$email')";
     if(mysqli_query($con, $sql))
     {
+       
         echo "Registration Successful";
     }
     else

@@ -1591,9 +1591,14 @@ a.forgot:hover {
 	padding-bottom: 5px;
 	margin: 0;
 }
-.register-top-grid div, .register-bottom-grid div {
-	width: 48%;
-	float: left;
+.register-bottom-grid div {
+	width: 19.5%;
+	margin: 10px 0;
+        float: left;
+}
+.register-top-grid div {
+    
+	width: 40%;
 	margin: 10px 0;
 }
 .register-top-grid span, .register-bottom-grid span {
@@ -1617,6 +1622,24 @@ a.forgot:hover {
   font-size: 1em;
   padding: 0.5em;
 }
+<<<<<<< Updated upstream
+=======
+.register-top-grid input[type="number"], .register-bottom-grid input[type="number"] {
+	border: 1px solid #ADA7A7;
+  outline-color: #FFD001;
+  width: 96%;
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+textarea{
+    border: 1px solid #ADA7A7;
+  outline-color: #FFD001;
+  width: 96%;
+  font-size: 1em;
+  padding: 0.5em;
+}
+>>>>>>> Stashed changes
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
@@ -1701,6 +1724,7 @@ a.forgot:hover {
 	text-transform: capitalize;
 	border:none;
 	outline:none;
+        
 }
 .register-but input[type="submit"]:hover {
 	background:#DF4782;
