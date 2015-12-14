@@ -1610,6 +1610,13 @@ a.forgot:hover {
   font-size: 1em;
   padding: 0.5em;
 }
+.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
+	border: 1px solid #ADA7A7;
+  outline-color: #FFD001;
+  width: 96%;
+  font-size: 1em;
+  padding: 0.5em;
+}
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
