@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 15, 2015, 6:40:07 PM
+    Author     : Amey Pokale
+*/
+
+
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#de1bd7), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #de1bd7, #65a9d7);
+   background: -moz-linear-gradient(top, #de1bd7, #65a9d7);
+   background: -ms-linear-gradient(top, #de1bd7, #65a9d7);
+   background: -o-linear-gradient(top, #de1bd7, #65a9d7);
+   padding: 12px 24px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 20px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b1c5c;
+   background: #1b1c5c;
+   }
