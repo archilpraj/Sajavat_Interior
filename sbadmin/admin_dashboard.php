@@ -30,6 +30,7 @@ if (!isset($_SESSION['admin_uname'])) {
             <!-- Custom Fonts -->
             <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             <script src="../alert_master/dist/sweetalert.min.js"></script>
+            <script src="https://cdn.rawgit.com/jmosbech/StickyTableHeaders/master/js/jquery.stickyt‌​ableheaders.min.js" type="text/javascript"></script>
             <link rel="stylesheet" type="text/css" href="../alert_master/dist/sweetalert.css">
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,6 +39,7 @@ if (!isset($_SESSION['admin_uname'])) {
                 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
             <script type="text/javascript">
+
                 function logout_confirm()
                 {
                     swal({
@@ -76,7 +78,90 @@ if (!isset($_SESSION['admin_uname'])) {
                         }
                     });
                 }
+                function disp(a)
+                {
+                    var req = a;
+                    if (req == "disp_bed")
+                    {
+                        document.getElementById("p_name").innerHTML = "Beds";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Color</th><th>Material</th><th>Bed Type</th></tr>";
+                    }
+                    else if (req == "disp_bed_side_table")
+                    {
+                        document.getElementById("p_name").innerHTML = "Bed Side Tables";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Color</th><th>Material</th><th>Table Type</th><th>Table Style</th></tr>";
+                    }
+                    else if (req == "disp_bookshlf_disp_unit")
+                    {
+                        document.getElementById("p_name").innerHTML = "BookShelf Display Units";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Shape</th><th>Material</th><th>Storage Type</th><th>Floor Standing</th></tr>";
+                    }
+                    else if (req == "disp_d_table")
+                    {
+                        document.getElementById("p_name").innerHTML = "Dining Tables";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Shape</th><th>Material</th><th>Storage Type</th><th>Floor Standing</th></tr>";
+                    }
+                    else if (req == "disp_dressors")
+                    {
+                        document.getElementById("p_name").innerHTML = "Dressors";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Frame Material</th><th>Storage Type</th><th>Type</th></tr>";
+                    }
+                    else if (req == "disp_sofa")
+                    {
+                        document.getElementById("p_name").innerHTML = "Sofas";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Primary Material</th><th>Room Type</th><th>Colour</th></tr>";
+                    }
+                    else if (req == "disp_table")
+                    {
+                        document.getElementById("p_name").innerHTML = "Tables";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Material</th><th>Shape</th><th>Size</th></tr>";
+                    }
+                    else if (req == "disp_tv_unit")
+                    {
+                        document.getElementById("p_name").innerHTML = "TV Units";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Wall Mount</th><th>Floor Standing</th><th>Primary Room</th></tr>";
+                    }
+                    else if (req == "new_order")
+                    {
+                        document.getElementById("p_name").innerHTML = "New Orders";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product ID</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th></tr>";
+                    }
+                    else if (req == "old_order")
+                    {
+                        document.getElementById("p_name").innerHTML = "Old Orders";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product ID</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th><th>Delivery Date</th></tr>";
+                    }
+                    //alert(req);
+                    var xmlhttp;
+                    if (window.XMLHttpRequest)
+                    {
+                        xmlhttp = new XMLHttpRequest();
+                    }
+                    else
+                    {
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function ()
+                    {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                        {
+                            var row = $(xmlhttp.responseText);
+                            $("#mt > tbody").children().remove();
+                            $("#mt > tbody").append(row);
+                        }
+                    }
+                    xmlhttp.open('POST', 'admin_func_check.php?val=' + req, true);
+                    xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                    xmlhttp.send();
+                }
             </script>
+            <style type="text/css">
+                .table#stickyHeader thead {
+                    border-top: none;
+                    border-bottom: none;
+                    background-color: #FFF;
+                } 
+            </style>
         </head>
 
         <body>
@@ -112,7 +197,7 @@ if (!isset($_SESSION['admin_uname'])) {
                     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
-                            <li class="active">
+                            <li>
                                 <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
@@ -126,35 +211,46 @@ if (!isset($_SESSION['admin_uname'])) {
                                     </li>
                                     <li>
                                         <a data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-box"></i> Products <i class="fa fa-fw fa-caret-down"></i></a>
+
                                         <ul id="demo2" class="collapse">
-                                            <li>
-                                                <a href="admin_product_bed.php"><i class="fa fa-fw fa-bed"></i>Beds</a>
+                                            <li class="active">
+                                                <nav class="navbar-collapse" role="navigation">
+                                                    <a href="#" name="disp_bed" onclick="disp(this.name)">Beds</a>
+                                                </nav>
                                             </li>
                                             <li>
-                                                <a href="admin_product_bed_side_table.php"><i class="fa fa-fw fa-bed"></i>Bed Side Table</a>
+                                                <a href="#" name="disp_bed_side_table" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>Bed Side Table</a>
                                             </li>
                                             <li>
-                                                <a href="admin_product_bkshlf_display_unit.php"><i class="fa fa-fw fa-bed"></i>Bookshelf Display Unit</a>
+                                                <a href="#" name="disp_bookshlf_disp_unit" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>Bookshelf Display Unit</a>
                                             </li>
                                             <li>
-                                                <a href="admin_product_d_table.php"><i class="fa fa-fw fa-bed"></i>Dining Tables</a>
+                                                <a href="#" name="disp_d_table" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>Dining Tables</a>
                                             </li>
                                             <li>
-                                                <a href="admin_product_dressor.php"><i class="fa fa-fw fa-bed"></i>Dressors</a>
+                                                <a href="#" name="disp_dressors" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>Dressors</a>
                                             </li>
                                             <li>
-                                                <a href="admin_product_sofa.php"><i class="fa fa-fw fa-bed"></i>Sofa</a>
+                                                <a href="#" name="disp_sofa" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>Sofa</a>
                                             </li>
                                             <li>
-                                                <a href="admin_product_table.php"><i class="fa fa-fw fa-bed"></i>Table</a>
+                                                <a href="#" name="disp_table" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>Table</a>
                                             </li>
                                             <li>
-                                                <a href="admin_product_tv_unit.php"><i class="fa fa-fw fa-bed"></i>TV Units</a>
+                                                <a href="#" name="disp_tv_unit" onclick="disp(this.name)"><i class="fa fa-fw fa-bed"></i>TV Units</a>
                                             </li>             
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-fw fa-sticky-note"></i> Orders</a>
+                                        <a data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-box"></i> Orders <i class="fa fa-fw fa-caret-down"></i></a>
+                                        <ul id="demo3" class="collapse">
+                                            <li>
+                                                <a href="#" name="new_order" onclick="disp(this.name)">New Orders</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" name="old_order" onclick="disp(this.name)">Old Orders</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -171,7 +267,7 @@ if (!isset($_SESSION['admin_uname'])) {
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                                    Beds <small>Stock Overview</small>
+                                    <div id="p_name"></div> <small>Stock Overview</small>
                                 </h1>
                                 <ol class="breadcrumb">
                                     <li class="active">
@@ -181,26 +277,17 @@ if (!isset($_SESSION['admin_uname'])) {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> All Beds</h3>
+                                        <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> All Units</h3>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Product Name</th>
-                                                    <th>Product Image</th>
-                                                    <th>Price (<i class="fa fa-rupee"></i>)</th>
-                                                    <th>Stock</th>
-                                                    <th>Color</th>
-                                                    <th>Material</th>
-                                                    <th>Category</th>
-                                                </tr>
+                                        <table class="table table-bordered table-hover table-striped" id="mt">
+                                            <thead id="t_head">
+
                                             </thead>
-                                            <tbody>
-                                            
+                                            <tbody id="t_data">
                                             </tbody>
                                         </table>
                                     </div>
@@ -223,11 +310,6 @@ if (!isset($_SESSION['admin_uname'])) {
 
             <!-- Bootstrap Core JavaScript -->
             <script src="js/bootstrap.min.js"></script>
-
-            <!-- Morris Charts JavaScript -->
-            <script src="js/plugins/morris/raphael.min.js"></script>
-            <script src="js/plugins/morris/morris.min.js"></script>
-            <script src="js/plugins/morris/morris-data.js"></script>
 
         </body>
 

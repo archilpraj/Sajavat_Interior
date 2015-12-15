@@ -14,15 +14,13 @@ if ($_GET['val'] == "add_bed") {
 } else if ($_GET['val'] == "disp_bed") {
     //disp_beds();
     $connection_obj = mysqli_connect("localhost", "root", "", "sj_database") or die(mysql_error());
-    $sql="select * from product_bed";
-    if(isset($_GET['type']))
-    {
-        if($_GET['type']=='pid')
-        {
-            $sql=$sql." order by product_name";
+    $sql = "select * from product_bed";
+    if (isset($_GET['type'])) {
+        if ($_GET['type'] == 'pid') {
+            $sql = $sql . " order by product_name";
         }
     }
-    $qry = mysqli_query($connection_obj,$sql);
+    $qry = mysqli_query($connection_obj, $sql);
 
     while ($row = mysqli_fetch_array($qry)) {
         echo "<tr>";
@@ -54,7 +52,7 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['product_style'] . "</center></td>";
         echo "</tr>";
     }
-}else if ($_GET['val'] == "disp_bookshlf_disp_unit") {
+} else if ($_GET['val'] == "disp_bookshlf_disp_unit") {
     //disp_bookshlf_disp_unit();
     $connection_obj = mysqli_connect("localhost", "root", "", "sj_database") or die(mysql_error());
     $qry = mysqli_query($connection_obj, "select * from product_bookshelf_display_unit");
@@ -72,9 +70,124 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['floor_standing'] . "</center></td>";
         echo "</tr>";
     }
+} else if ($_GET['val'] == "disp_d_table") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from product_dinning_table";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . "></center></td>";
+        echo "<td><center>" . $row['product_price'] . "</center></td>";
+        echo "<td><center>" . $row['product_stock'] . "</center></td>";
+        echo "<td><center>" . $row['table_shape'] . "</center></td>";
+        echo "<td><center>" . $row['table_material'] . "</center></td>";
+        echo "<td><center>" . $row['material'] . "</center></td>";
+        echo "<td><center>" . $row['cushain_type'] . "</center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "disp_dressors") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from product_dresser_mirror";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . "></center></td>";
+        echo "<td><center>" . $row['product_price'] . "</center></td>";
+        echo "<td><center>" . $row['product_stock'] . "</center></td>";
+        echo "<td><center>" . $row['product_desc'] . "</center></td>";
+        echo "<td><center>" . $row['frame_material'] . "</center></td>";
+        echo "<td><center>" . $row['storage_type'] . "</center></td>";
+        echo "<td><center>" . $row['type'] . "</center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "disp_sofa") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from product_sofa";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . "></center></td>";
+        echo "<td><center>" . $row['product_price'] . "</center></td>";
+        echo "<td><center>" . $row['product_stock'] . "</center></td>";
+        echo "<td><center>" . $row['product_desc'] . "</center></td>";
+        echo "<td><center>" . $row['primary_material'] . "</center></td>";
+        echo "<td><center>" . $row['room_type'] . "</center></td>";
+        echo "<td><center>" . $row['colour'] . "</center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "disp_table") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from product_table";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . "></center></td>";
+        echo "<td><center>" . $row['product_price'] . "</center></td>";
+        echo "<td><center>" . $row['product_stock'] . "</center></td>";
+        echo "<td><center>" . $row['product_desc'] . "</center></td>";
+        echo "<td><center>" . $row['material'] . "</center></td>";
+        echo "<td><center>" . $row['shape'] . "</center></td>";
+        echo "<td><center>" . $row['size'] . "</center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "disp_tv_unit") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from product_tv_unit";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . "></center></td>";
+        echo "<td><center>" . $row['product_price'] . "</center></td>";
+        echo "<td><center>" . $row['product_stock'] . "</center></td>";
+        echo "<td><center>" . $row['product_desc'] . "</center></td>";
+        echo "<td><center>" . $row['wall_mount'] . "</center></td>";
+        echo "<td><center>" . $row['floor_standing'] . "</center></td>";
+        echo "<td><center>" . $row['primary_room'] . "</center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "new_order") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from new_order";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['order_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['user_id'] . "</center></td>";
+        echo "<td><center>" . $row['payment_mode'] . "</center></td>";
+        echo "<td><center>" . $row['order_date'] . "</center></td>";
+        echo "<td><center>" . $row['total_amt'] . "</center></td>";
+        echo "<td><center>" . $row['order_status'] . "</center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "old_order") {
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
+    $sql = "select * from old_order";
+    $qry = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['order_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['user_id'] . "</center></td>";
+        echo "<td><center>" . $row['payment_mode'] . "</center></td>";
+        echo "<td><center>" . $row['order_date'] . "</center></td>";
+        echo "<td><center>" . $row['total_amt'] . "</center></td>";
+        echo "<td><center>" . $row['order_status'] . "</center></td>";
+        echo "<td><center>" . $row['delivery_date'] . "</center></td>";
+        echo "</tr>";
+    }
 } else if ($_GET['val'] == "update") {
     update($_POST['U_ID'], $_POST['U_NAME'], $_POST['U_CNCT'], $_POST['U_DOB'], $_POST['U_GENDER'], $_POST['U_ADD'], $_POST['U_DATEOC'], $_POST['U_DIS'], $_POST['U_MED'], $_POST['U_CFEES'], $_POST['U_TFEES']);
-    
 } else if ($_GET['val'] == "delete") {
     delete($_GET['id']);
 } else if ($_GET['val'] == "menu") {
