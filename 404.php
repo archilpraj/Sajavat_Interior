@@ -24,7 +24,7 @@
             <h2>There's nothing here.</h2>
             <h3>Page Not Found </h3>
             <br>
-            <a class="button" href="index.php">Home</a>
+            <a class="button" href="http://localhost/Sajavat_interior/index.php">Home</a>
         </div><!-- / message -->
        
     </body>
