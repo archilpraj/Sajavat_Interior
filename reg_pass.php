@@ -9,8 +9,6 @@ session_start();
         <title>Sajavat Interiors | Wellcome</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Luxury Furnish Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -32,8 +30,8 @@ session_start();
         <div class="main">
             <div class="content_box">
                 <br><br><br><br><br><br><br><br><br><br><br><br>
-                <center>  <div><font color="df4782"><h2><b>Wellcome To Sajavat Interiors (<font color="red"> <?php echo $_SESSION['user']; ?></font> )</b></h2></font></div><br>
-                    <h3>Redirecting To Home Page</h3>
+                <center>  <div><font color="df4782"><h2><b>Welcome <font color="red"> <?php echo $_SESSION['user']; ?></font> To Sajavat Interiors </b></h2></font></div><br>
+                    <h3>Redirecting To Home Page In 5 Seconds</h3>
                 </center>
             </div>  
         </div>
