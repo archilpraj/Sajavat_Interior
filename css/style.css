@@ -859,6 +859,10 @@ p.email span:hover{
 	width: 23%;
 	float: left;
 }
+.about_us {
+	width: 23%;
+	
+}
 ul.breadcrumbs{
 	padding:0;
 	list-style:none;
@@ -1622,8 +1626,7 @@ a.forgot:hover {
   font-size: 1em;
   padding: 0.5em;
 }
-<<<<<<< Updated upstream
-=======
+
 .register-top-grid input[type="number"], .register-bottom-grid input[type="number"] {
 	border: 1px solid #ADA7A7;
   outline-color: #FFD001;
@@ -1639,7 +1642,7 @@ textarea{
   font-size: 1em;
   padding: 0.5em;
 }
->>>>>>> Stashed changes
+
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;

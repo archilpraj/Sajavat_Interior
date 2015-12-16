@@ -50,7 +50,10 @@ if (isset($_SESSION['user'])) {
                         </div>
                         <div class="header_right">
                             <ul class="social">
+
                                 <li><a href="https://www.facebook.com/sjintfurniture"> <i class="fb"> </i> </a></li>
+                                
+
                                 <li><a href=""><i class="tw"> </i> </a></li>
                             </ul>
                             <div class="clearfix"></div>

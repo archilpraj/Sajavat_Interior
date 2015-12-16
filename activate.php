@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    header("location:index.html");
+    header("location:404.php");
 } else {
     ?>
     <!DOCTYPE HTML>
@@ -111,17 +111,22 @@ if (isset($_SESSION['user'])) {
                     </div>  
                     <div class="about_box">
                         <ul class="login">
-                            <li class="login_text"><a href="login.php">Login</a></li>
-                            <li class="wish"><a href="index.php">Home</a></li>
+                            <li class="wish"><a href="login.php">Login</a></li>
+                            <li class="login_text"><a href="register.php">Register</a></li>
+                            <div class='clearfix'></div>
+                        </ul>
+                        <ul class="quick_access">
+                            <li class="view_cart"><a href="index.php">Home</a></li>
+                            <li class="check"><a href="contact.php">Contact Us</a></li>
                             <div class='clearfix'></div>
                         </ul>
 
-                        <div class="search">
-                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Search';
-                                    }">
-                            <input type="submit" value="">
-                        </div>
+                        <!-- <div class="search">
+                             <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                         this.value = 'Search';
+                                     }">
+                             <input type="submit" value="">
+                         </div>-->
                     </div>
                 </div>
             </div>
@@ -133,10 +138,11 @@ if (isset($_SESSION['user'])) {
                             <div class="col-md-9">
 
                                 <div class="account_grid">
-
+                                        
                                     <div class="col-md-6 login-right">
+                                        <h3>Resend Code</h3>
+                                        <a href="retrieve.php"><input type="submit" value="Resend" class="btn btn-default"/></a><br><br>
                                         <h3>Recovery Account</h3>
-
                                         <form name="retrieve_form" action="logic.php?val=activate" method="POST">
                                             <div>
                                                 <span>Email Address</span>
@@ -151,8 +157,8 @@ if (isset($_SESSION['user'])) {
 
                                             <div>
                                                 <span>Password: </span>
-                                                 <input type="password" name="txtpass" id="txtpass" required/>
-                                                 <font class="alert-danger"> <div id="errrepass"></div></font>
+                                                <input type="password" name="txtpass" id="txtpass" required/>
+                                                <font class="alert-danger"> <div id="errrepass"></div></font>
                                             </div>
                                             <div>
                                                 <span>Confirm Password:</span>
@@ -162,87 +168,38 @@ if (isset($_SESSION['user'])) {
                                             <input type="submit" value="Submit" name="submitbtn" id="submitbtn" class="btn btn-default" disabled="true"/>
                                         </form>
                                     </div>
-                                    </div>	
-                                    <div class="clearfix"> </div>
-                                </div>
+                                </div>	
+                                <div class="clearfix"> </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="instagram_top">
-                    <div class="instagram text-center">
-                        <h3>Our Collections</h3>
-                    </div>
-                    <ul class="instagram_grid">
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                        <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                        <div class="clearfix"></div>
-                        <div id="small-dialog1" class="mfp-hide">
-                            <div class="pop_up">
-                                <h4>A Sample Photo Stream</h4>
-                                <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                            </div>
-                        </div>
-                    </ul>
+        </div>
+        <div class="container">
+            <div class="instagram_top">
+                <div class="instagram text-center">
+                    <h3>Our Collections</h3>
                 </div>
-                <ul class="footer_social">			
-                    <li><a href="#"><i class="tw"> </i> </a></li>
-                    <li></li>
-                    <li><a href="#"> <i class="fb"> </i> </a></li>
+                <ul class="instagram_grid">
+                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
+                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
+                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
+                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
+                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
+                    <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
                     <div class="clearfix"></div>
+                    <div id="small-dialog1" class="mfp-hide">
+                        <div class="pop_up">
+                            <h4>A Sample Photo Stream</h4>
+                            <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
+                        </div>
+                    </div>
                 </ul>
             </div>
-            <div class="footer">
-                <div class="container">
-                    <div class="footer-grid">
-                        <h3>Category</h3>
-                        <ul class="list1">
-                            <li><a href="index.php">Home</a></li>
-                            <li><a href="about.php">About us</a></li>
-                            <li><a href="about.php">Eshop</a></li>
-                            <li><a href="about.php">Features</a></li>
-                            <li><a href="about.php">New Collections</a></li>
-                            <li><a href="typo.php">Typo</a></li>
-                            <li><a href="contact.php">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-grid">
-                        <h3>Our Account</h3>
-                        <ul class="list1">
-                            <li><a href="login.php">Your Account</a></li>
-                            <li><a href="contact.php">Personal information</a></li>
-                            <li><a href="contact.php">Addresses</a></li>
-                            <li><a href="checkout.php">Orders history</a></li>
-                            <li><a href="about.php">About Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-grid">
-                        <h3>Newsletter</h3>
-                        <p class="footer_desc">Subscribe To Our Newsletter</p>
-                        <div class="search_footer">
-                            <input type="text" class="text" value="Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Your Email';
-                                    }">
-                            <input type="submit" value="Submit">
-                        </div>
-                        <img src="images/payment.png" class="img-responsive" alt=""/>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <div class="footer_bottom">
-                <div class="container">
-                    <div class="copy">
-                        <p>Copyright &copy; Sajavat Interiors. All Rights Reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </body>
+
+        </div>
+        <?php include 'footer.php'; ?>
+    </body>
     </html>		
 <?php } ?>
