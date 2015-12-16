@@ -82,17 +82,7 @@ include 'dbhelp.php'
                     <div class="row">
                         <div class="col-md-3">
                             <div class="menu_box">
-                                <h3 class="menu_head">Products</h3>
-                                <ul class="nav">
-                                    <li><a href="about.php">Beds</a></li>
-                                    <li><a href="about.php">Bed Side Tables</a></li>
-                                    <li><a href="about.php">Dining Tables</a></li>
-                                    <li><a href="about.php">TV Sets</a></li>
-                                    <li><a href="about.php">Sofas</a></li>
-                                    <li><a href="about.php">Dressers</a></li>
-                                    <li><a href="about.php">Bookshelf And Display Units</a></li>
-                                    <li><a href="typo.php">Tables</a></li>
-                                </ul>
+                                <h3 class="menu_head"><a href="products.php"> Products</a></h3>
                             </div>
 
                         </div>

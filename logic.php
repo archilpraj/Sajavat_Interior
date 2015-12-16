@@ -110,3 +110,32 @@ else if($_GET['val'] == 'update_user')
         echo "Update failed";
     }
 }
+
+else if($_GET['val']== 'p_beds')
+{
+    $sql="select * from product_bed";
+    $res=  mysqli_query($con,$sql);
+    while($row = mysqli_fetch_array($res))
+    {
+        $img = $row['product_img'];
+        $pname = $row['product_name'];
+        $pprice = $row['product_price'];
+        echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>";
+        echo "<a href='single.php'>";
+        echo "<div class='inner_content clearfix'>";
+        echo "<div class='product_image'>";
+        echo "<img src='$img' class='img-responsive' height='400px' width='200px'/>";
+        echo "<a href='cart.php' class='button item_add item_1'> </a>";
+        echo "<div class='product_container'>";
+        echo "<div class='cart-left'>";
+        echo "<p class='title'>$pname</p>";
+        echo "</div>";
+        echo "<span class='amount item_price'>$pprice</span>";
+        echo "<div class='clearfix'></div>";
+        echo "</div>";		
+        echo "</div>";
+        echo "</div>";
+        echo "</a>";
+        echo "</div>";
+    }
+}
