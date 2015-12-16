@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 
 include 'dbhelp.php';
 if ($_GET['val'] == 'register') {
@@ -35,6 +35,7 @@ if ($_GET['val'] == 'register') {
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($res);
     if ($row['user_password'] == $password) {
+        session_start();
         $_SESSION['user'] = $username;
         header("Location: index.php");
     } else {
@@ -67,6 +68,7 @@ if ($_GET['val'] == 'register') {
     $sql = "update user set user_vcode='" . $code . "' where user_email='" . $email . "'";
     mysqli_query($con, $sql);
 } elseif ($_GET['val'] == 'logout') {
+    session_start();
     session_unset();
     session_destroy();
     header("Location: index.php");
@@ -87,5 +89,24 @@ if ($_GET['val'] == 'register') {
         }
     } else {
         echo "Activation code doesnt match";
+    }
+}
+
+else if($_GET['val'] == 'update_user')
+{
+    session_start();
+    $uid=$_SESSION['user'];
+    $u_email1=$_POST['txtemail'];
+    $u_address1=$_POST['txtaddress'];
+    $u_pincode1=$_POST['txtpincode'];
+    $u_phone1=$_POST['txtphone'];
+    $sql="update user set user_email='$u_email1',user_address='$u_address1',user_pincode=$u_pincode1,user_phone='$u_phone1' where user_id='$uid'";
+    if(mysqli_query($con, $sql))
+    {
+        echo "Update successful";
+    }
+    else
+    {
+        echo "Update failed";
     }
 }

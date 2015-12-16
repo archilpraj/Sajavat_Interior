@@ -1,5 +1,17 @@
 <?php
 session_start();
+require 'dbhelp.php';
+$sql="select * from user where user_id='".@$_SESSION['user']."'";
+    $res= mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($res);
+    $_SESSION['u_email']=$row['user_email'];
+    $_SESSION['u_fname']=$row['user_firstname'];
+    $_SESSION['u_lname']=$row['user_lastname'];
+    $_SESSION['u_address']=$row['user_address'];
+    $_SESSION['u_city']=$row['user_city'];
+    $_SESSION['u_state']=$row['user_state'];
+    $_SESSION['u_pincode']=$row['user_pincode'];
+    $_SESSION['u_phone']=$row['user_phone'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -58,7 +70,7 @@ session_start();
                 <div class="about_box">
                      <?php if (isset($_SESSION['user'])) { ?>
                             <ul class="login">
-                                <li class="login_text"><a href="checkout.php"><?php echo 'Welcome '.$_SESSION['user'];?></a></li>
+                                <li class="login_text"><a href="user_profile.php"><?php echo 'Welcome '.$_SESSION['u_fname'];?></a></li>
                                 <li class="wish"><a href="logic.php?val=logout">Logout</a></a></li>
                                 <div class='clearfix'></div>
                             </ul>
