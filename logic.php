@@ -21,10 +21,10 @@ if ($_GET['val'] == 'register') {
     // $sql="INSERT INTO user (user_id, user_password, user_email) VALUES ('$username','$password','$email')";
     if (mysqli_query($con, $sql)) {
 
-        $_SESSION['user']=$username;
+        $_SESSION['user'] = $username;
         header("location:reg_pass.php");
     } else {
-       header("location:reg_fail.php");
+        header("location:reg_fail.php");
     }
 } elseif ($_GET['val'] == 'login') {
     $username = $_POST['txtuser'];
@@ -90,49 +90,61 @@ if ($_GET['val'] == 'register') {
     } else {
         echo "Activation code doesnt match";
     }
-}
-
-else if($_GET['val'] == 'update_user')
-{
+} else if ($_GET['val'] == 'update_user') {
     session_start();
-    $uid=$_SESSION['user'];
-    $u_email1=$_POST['txtemail'];
-    $u_address1=$_POST['txtaddress'];
-    $u_pincode1=$_POST['txtpincode'];
-    $u_phone1=$_POST['txtphone'];
-    $sql="update user set user_email='$u_email1',user_address='$u_address1',user_pincode=$u_pincode1,user_phone='$u_phone1' where user_id='$uid'";
-    if(mysqli_query($con, $sql))
-    {
+    $uid = $_SESSION['user'];
+    $u_email1 = $_POST['txtemail'];
+    $u_address1 = $_POST['txtaddress'];
+    $u_pincode1 = $_POST['txtpincode'];
+    $u_phone1 = $_POST['txtphone'];
+    $sql = "update user set user_email='$u_email1',user_address='$u_address1',user_pincode=$u_pincode1,user_phone='$u_phone1' where user_id='$uid'";
+    if (mysqli_query($con, $sql)) {
         echo "Update successful";
-    }
-    else
-    {
+    } else {
         echo "Update failed";
     }
-}
-
-else if($_GET['val']== 'p_beds')
-{
-    $sql="select * from product_bed";
-    $res=  mysqli_query($con,$sql);
-    while($row = mysqli_fetch_array($res))
-    {
+} else if ($_GET['val'] == 'p_beds') {
+    $pcat="product_bed";
+    $sql = "select * from product_bed";
+    $res = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_array($res)) {
         $img = $row['product_img'];
         $pname = $row['product_name'];
         $pprice = $row['product_price'];
+        $ppid = $row['product_id'];
+        $pstock=$row['product_stock'];
+        $pcolor=$row['product_color'];
+        $pwarranty=$row['product_warranty'];
+        $assembly=$row['product_assembly'];
+        $material=$row['product_material'];
+        $storage=$row['storage'];
+        $btype=$row['bed_type'];
+        $h=$row['product_h'];
+        $w=$row['product_w'];
+        $d=$row['product_d'];
+        if($pstock>0)
+        {
+            $stckval='<font color=green>In Stock</font>';
+        }
+        else
+        {
+            $stckval='<font color=red>Out Of Stock</font>';
+        }
+        $pdat= "<tr><th>Availability</th><th>Dimensions</th><th>Color</th><th>Warranty</th><th>Assembly</th><th>Product Material</th><th>Storage</th><th>Bed Type</th></tr><tr><td>$stckval</td><td>H=$h+ W=$w+ D=$d</td><td>$pcolor</td><td>$pwarranty</td><td>$assembly</td><td>$material</td><td>$storage</td><td>$btype</td></tr>";
         echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>";
-        echo "<a href='single.php'>";
+        echo "<a href='single.php?ppid=$ppid&pcat=$pcat&pdat=$pdat'>";
         echo "<div class='inner_content clearfix'>";
         echo "<div class='product_image'>";
-        echo "<img src='$img' class='img-responsive' height='400px' width='200px'/>";
-        echo "<a href='cart.php' class='button item_add item_1'> </a>";
+        echo "<img src='$img' class='img-responsive' height='700px' width='350px'/>";
+        //echo "<a href='cart.php' class='button item_add item_1'></a>";
         echo "<div class='product_container'>";
         echo "<div class='cart-left'>";
         echo "<p class='title'>$pname</p>";
-        echo "</div>";
-        echo "<span class='amount item_price'>$pprice</span>";
+        echo "</div><br/>";
+        echo "<span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>";
+        echo "<center><p><button type='button' class='btn btn-primary' value='$ppid' onclick='updcart(this.value)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
         echo "<div class='clearfix'></div>";
-        echo "</div>";		
+        echo "</div>";
         echo "</div>";
         echo "</div>";
         echo "</a>";

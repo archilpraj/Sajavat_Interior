@@ -1,17 +1,31 @@
 <?php
 session_start();
 require 'dbhelp.php';
-$sql="select * from user where user_id='".$_SESSION['user']."'";
-    $res= mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($res);
-    $_SESSION['u_email']=$row['user_email'];
-    $_SESSION['u_fname']=$row['user_firstname'];
-    $_SESSION['u_lname']=$row['user_lastname'];
-    $_SESSION['u_address']=$row['user_address'];
-    $_SESSION['u_city']=$row['user_city'];
-    $_SESSION['u_state']=$row['user_state'];
-    $_SESSION['u_pincode']=$row['user_pincode'];
-    $_SESSION['u_phone']=$row['user_phone'];
+$sql = "select * from user where user_id='" . @$_SESSION['user'] . "'";
+$res = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($res);
+$_SESSION['u_email'] = $row['user_email'];
+$_SESSION['u_fname'] = $row['user_firstname'];
+$_SESSION['u_lname'] = $row['user_lastname'];
+$_SESSION['u_address'] = $row['user_address'];
+$_SESSION['u_city'] = $row['user_city'];
+$_SESSION['u_state'] = $row['user_state'];
+$_SESSION['u_pincode'] = $row['user_pincode'];
+$_SESSION['u_phone'] = $row['user_phone'];
+
+$pcat = $_GET['pcat'];
+$ppid = $_GET['ppid'];
+$pdat = $_GET['pdat'];
+
+$sql = "select * from $pcat where product_id='$ppid'";
+$res = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($res);
+$img = $row['product_img'];
+$img2 = $row['product_img2'];
+$img3 = $row['product_img3'];
+$img4 = $row['product_img4'];
+$pname = $row['product_name'];
+$pprice = $row['product_price'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -33,6 +47,8 @@ $sql="select * from user where user_id='".$_SESSION['user']."'";
         <script src="js/jquery.easydropdown.js"></script>
         <!-- Add fancyBox main JS and CSS files -->
         <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
         <script>
             $(document).ready(function () {
@@ -80,41 +96,41 @@ $sql="select * from user where user_id='".$_SESSION['user']."'";
                 </div>  
                 <div class="about_box">
                     <?php if (isset($_SESSION['user'])) { ?>
-                            <ul class="login">
-                                <li class="login_text"><a href="user_profile.php"><?php echo 'Welcome '.$_SESSION['u_fname'];?></a></li>
-                                <li class="wish"><a href="logic.php?val=logout">Logout</a></li>
-                                <div class='clearfix'></div>
+                        <ul class="login">
+                            <li class="login_text"><a href="user_profile.php"><?php echo 'Welcome ' . $_SESSION['u_fname']; ?></a></li>
+                            <li class="wish"><a href="logic.php?val=logout">Logout</a></li>
+                            <div class='clearfix'></div>
+                        </ul>
+                        <div class="cart_bg">
+                            <ul class="cart">
+                                <a href="checkout.php">
+                                    <h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
+                                </a>    
                             </ul>
-                            <div class="cart_bg">
-                                <ul class="cart">
-                                    <a href="checkout.php">
-                                        <h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
-                                    </a>    
-                                </ul>
-                            </div>
-                            <ul class="login">
-                                <li class="login_text"><a href="checkout.php">Checkout</a></li>
-                                <li class="wish"><a href="contact.php">Contact Us</a></li>
-                                <div class='clearfix'></div>
-                            </ul><?php } else { ?>
-                            <ul class="login">
-                                <li class="login_text"><a href="login.php">Login</a></li> 
-                                <li class="wish"><a href="register.php">Register</a></li>
-                                <div class='clearfix'></div>
-                            </ul>
-                         <ul class="quick_access">
-                             <li class="view_cart"><a href="about.php">About Us</a></li>
-                             <li class="check"><a href="contact.php">Contact Us</a></li>
-                                <div class='clearfix'></div>
-                            </ul>
-                        <?php } ?>
+                        </div>
+                        <ul class="login">
+                            <li class="login_text"><a href="checkout.php">Checkout</a></li>
+                            <li class="wish"><a href="contact.php">Contact Us</a></li>
+                            <div class='clearfix'></div>
+                        </ul><?php } else { ?>
+                        <ul class="login">
+                            <li class="login_text"><a href="login.php">Login</a></li> 
+                            <li class="wish"><a href="register.php">Register</a></li>
+                            <div class='clearfix'></div>
+                        </ul>
+                        <ul class="quick_access">
+                            <li class="view_cart"><a href="about.php">About Us</a></li>
+                            <li class="check"><a href="contact.php">Contact Us</a></li>
+                            <div class='clearfix'></div>
+                        </ul>
+                    <?php } ?>
 
-                   <!-- <div class="search">
-                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                    this.value = 'Search';
-                                }">
-                        <input type="submit" value="">
-                    </div>-->
+                    <!-- <div class="search">
+                         <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                     this.value = 'Search';
+                                 }">
+                         <input type="submit" value="">
+                     </div>-->
                 </div>
             </div>
         </div>
@@ -144,27 +160,34 @@ $sql="select * from user where user_id='".$_SESSION['user']."'";
                                 <div class="labout span_1_of_a1">
                                     <div class="flexslider">
                                         <ul class="slides">
-                                            <li data-thumb="images/s1.jpg">
-                                                <img src="images/s1.jpg" />
+                                            <li data-thumb=<?php echo $img; ?>>
+                                                <img src=<?php echo $img; ?>/>
                                             </li>
-                                            <li data-thumb="images/s2.jpg">
-                                                <img src="images/s2.jpg" />
+                                            <li data-thumb=<?php echo $img2; ?>>
+                                                <img src=<?php echo $img2; ?>/>
                                             </li>
-                                            <li data-thumb="images/s3.jpg">
-                                                <img src="images/s3.jpg" />
+                                            <li data-thumb=<?php echo $img3; ?>>
+                                                <img src=<?php echo $img3; ?>/>
                                             </li>
-                                            <li data-thumb="images/s4.jpg">
-                                                <img src="images/s4.jpg" />
+                                            <li data-thumb=<?php echo $img4; ?>>
+                                                <img src=<?php echo $img4; ?>/>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
-                                    <h1>Lorem Ipsum</h1>
-                                <br>   <span><font color="df4782" size="5"><b>Price : $120.00</b></font></span>
+                                    <h1><?php echo $pname; ?></h1>
+                                    <br>   <span><font color="df4782" size="5"><b>Price : <i class="fa fa-inr"></i><?php echo $pprice; ?></b></font></span>
+
+                                    <br> <br> <br> 
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped" id="mt">
+                                        <?php echo $pdat; ?>
+                                        </table>
+                                    </div>
                                     
-                                    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-                                <div class="btn_form button item_add item_1">
+                                    <br> <br> <br> <br> <br> <br> <br>
+                                    <div class="btn_form button item_add item_1">
                                         <form>
                                             <input type="submit" value="Add to Cart" title="">
                                         </form>
@@ -177,7 +200,7 @@ $sql="select * from user where user_id='".$_SESSION['user']."'";
                                     <ul class="resp-tabs-list">
                                         <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Product Description</span></li>
                                         <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Additional Information</span></li>
-                                       
+
                                         <div class="clear"></div>
                                     </ul>				  	 
                                     <div class="resp-tabs-container">
@@ -200,7 +223,7 @@ $sql="select * from user where user_id='".$_SESSION['user']."'";
                                                 </ul>           
                                             </div>
                                         </div>	
-                                      
+
                                     </div>
                                 </div>
                             </div>	

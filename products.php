@@ -10,6 +10,7 @@ include 'dbhelp.php'
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/simpleCart.min.js"></script>
         <script src="js/jquery.min.js"></script>
