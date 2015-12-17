@@ -108,7 +108,13 @@ if (!isset($_SESSION['admin_uname'])) {
                     border-top: none;
                     border-bottom: none;
                     background-color: #FFF;
-                } 
+                }
+                input
+                {
+                    -webkit-border-radius: 5px; //For Safari, etc.
+                    -moz-border-radius: 5px; //For Mozilla, etc.
+                    border-radius: 5px; //CSS3 Feature
+                }
             </style>
         </head>
 
@@ -213,38 +219,136 @@ if (!isset($_SESSION['admin_uname'])) {
                                 </ol>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Beds</h3>
-                                    </div>
-
-                                    <form class = "form-horizontal" role = "form">
-                                        <div>
-                                            <br/>
-                                            <label for = "Product Id" class = "col-sm-2 control-label">Product Id</label>
-                                            <div class = "input-group">
-                                                <span class="input-group-addon" id="basic-addon1">P_BED</span>
-                                                <input type="text" class="form-control" placeholder="Product Id" aria-describedby="basic-addon1">
-                                            </div>
-                                            <br/>
-                                            <label for = "Product Name" class = "col-sm-2 control-label">Product Name</label>
-                                            <div class = "input-group">
-                                                <input type="text" class="form-control" placeholder="Product Name" >
-                                            </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Beds</h3>
                                         </div>
-
-                                    </form>
-
+                                    </div>
                                 </div>
                             </div>
+
+                            <form class = "form-horizontal" role = "form">
+                                <label><h3>Basic Info</h3></label>
+                                <div class="row">
+                                    <div class="col-md-4"><label class = "control-label">Product Id</label>
+                                        <div class = "input-group">
+                                            <span class="input-group-addon " id="basic-addon1">P_BED</span>
+                                            <input type="text" name="product_id" class="form-control " placeholder="Product Id" aria-describedby="basic-addon1" required>
+                                        </div></div>
+                                    <div class="col-md-4">
+                                        <label class = "control-label">Product Name</label>
+                                        <div class = "input-group">
+                                            <input type="text" name="product_name" class="form-control" placeholder="Product Name" style="width: 350px;" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <label><h3>Image Selection</h3></label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Image 1</label>
+                                        <input type="file" name="image1" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Image 2</label>
+                                        <input type="file" name="image2" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Image 3</label>
+                                        <input type="file" name="image3" class="form-control" style="width:250px;" required>
+                                    </div>
+                                </div>
+                                <!--Image Selection 2-->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Image 4</label>
+                                        <input type="file" name="image4" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Image 5</label>
+                                        <input type="file" name="image5" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Image 6</label>
+                                        <input type="file" name="image6" class="form-control" style="width:250px;" required>
+                                    </div>
+                                </div>
+                                <label><h3>Price,Desc And Stock</h3></label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Price</label>
+                                        <input type="number"  name="product_price" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Desc</label>
+                                        <input type="text" name="product_desc" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Stock</label>
+                                        <input type="number"  name="product_stock" maxlength="20" class="form-control" style="width:250px;" required>
+                                    </div>
+                                </div>
+                                <label><h3>Height,Width,Depth And Color</h3></label>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="control-label">Product Height</label>
+                                        <input type="number"  name="product_h" maxlength="200" class="form-control" style="width:200px;" required>
+                                    </div>
+                                    <div class="col-md-3"><label class="control-label">Product Width</label>
+                                        <input type="number"  name="product_w" maxlength="200" class="form-control" style="width:200px;" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label">Product Depth</label>
+                                        <input type="number"  name="product_d" maxlength="200" class="form-control" style="width:200px;" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="control-label">Product Color</label>
+                                        <input type="text"  name="product_color" class="form-control" style="width:200px;" required>
+                                    </div>
+                                </div>
+                                <label><h3>Warranty</h3></label>
+                                <div class="row">
+                                    <div class="row-md-12">
+                                        <label class="control-label">Product Warranty</label>
+                                        <input type="text" name="product_warranty" class="form-control" style="width:200px;" required>
+                                    </div>
+                                </div>
+                                <label><h3>Assembly Type</h3></label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Product Assembly Type</label>
+                                        <select name="assembly" class="form-control" style="width:300px;"><option>Carpenter Assembly</option><option>Manual Assembly</option></select>
+                                    </div>
+                                </div>
+                                <label><h3>Material,Storage And Bed Type</h3></label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Material Type</label>
+                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Engineered Wood</option></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Storage</label>
+                                        <select name="storage" class="form-control" style="width:300px;"><option>Yes</option><option>No</option></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Bed Type</label>
+                                        <select name="bed_type" class="form-control" style="width:300px;"><option>King</option><option>Queen</option></select>
+                                    </div>
+                                </div>
+                                <label class="clearfix"></label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <center><button type="button" class="btn btn-primary" onclick="">Add To Database</button></center>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <!-- /.row -->
-
                     </div>
                     <!-- /.container-fluid -->
-
                 </div>
                 <!-- /#page-wrapper -->
 

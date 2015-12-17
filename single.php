@@ -74,7 +74,26 @@ $pprice = $row['product_price'];
                     fit: true   // 100% fit in a container
                 });
             });
-        </script>	
+        </script>
+        <style>
+            .flexslider {
+                width: 300px;
+                height: 300px;
+            }
+
+            .flex-container ul {
+                margin: 0px;
+                padding: 0px;
+            }
+            .flex-container li {
+                list-style: outside none none;
+                display: inline;
+            }
+            .flexslider .slides img {
+                width: inherit;
+                max-height: inherit;
+            }
+        </style>
     </head>
     <body>
         <div class="header">
@@ -160,17 +179,17 @@ $pprice = $row['product_price'];
                                 <div class="labout span_1_of_a1">
                                     <div class="flexslider">
                                         <ul class="slides">
-                                            <li data-thumb=<?php echo $img; ?>>
-                                                <img src=<?php echo $img; ?>/>
+                                            <li data-thumb='<?php echo $img; ?>'>
+                                                <img height="800px" width="400px" src='<?php echo $img; ?>' />
                                             </li>
-                                            <li data-thumb=<?php echo $img2; ?>>
-                                                <img src=<?php echo $img2; ?>/>
+                                            <li data-thumb='<?php echo $img2; ?>'>
+                                                <img height="800px" width="400px" src='<?php echo $img2; ?>' />
                                             </li>
-                                            <li data-thumb=<?php echo $img3; ?>>
-                                                <img src=<?php echo $img3; ?>/>
+                                            <li data-thumb='<?php echo $img3; ?>'>
+                                                <img height="800px" width="400px" src='<?php echo $img3; ?>' />
                                             </li>
-                                            <li data-thumb=<?php echo $img4; ?>>
-                                                <img src=<?php echo $img4; ?>/>
+                                            <li data-thumb='<?php echo $img4; ?>'>
+                                                <img height="800px" width="400px" src='<?php echo $img4; ?>' />
                                             </li>
                                         </ul>
                                     </div>
@@ -182,10 +201,10 @@ $pprice = $row['product_price'];
                                     <br> <br> <br> 
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover table-striped" id="mt">
-                                        <?php echo $pdat; ?>
+                                            <?php echo $pdat; ?>
                                         </table>
                                     </div>
-                                    
+
                                     <br> <br> <br> <br> <br> <br> <br>
                                     <div class="btn_form button item_add item_1">
                                         <form>
