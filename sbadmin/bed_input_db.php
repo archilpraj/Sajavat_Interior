@@ -79,6 +79,19 @@ if (!isset($_SESSION['admin_uname'])) {
                         }
                     });
                 }
+                function alrt() {
+                    swal({
+                        title: "Added To DB!",
+                        text: "Sucessfully Added To Database",
+                        type: "success",
+                        confirmButtonColor: "#00ff00",
+                        confirmButtonText: "Continue",
+                        closeOnConfirm: false
+                    },
+                    function () {
+                        window.location.href = 'bed_input_db.php';
+                    });
+                }
                 function disp()
                 {
                     var xmlhttp;
@@ -102,6 +115,8 @@ if (!isset($_SESSION['admin_uname'])) {
                     xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
                     xmlhttp.send();
                 }
+
+
             </script>
             <style type="text/css">
                 .table#stickyHeader thead {
@@ -230,7 +245,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 </div>
                             </div>
 
-                            <form class = "form-horizontal" role = "form">
+                            <form class = "form-horizontal" role = "form" action="add_update_del_logic.php?tab=bed" method="POST" enctype="multipart/form-data">
                                 <label><h3>Basic Info</h3></label>
                                 <div class="row">
                                     <div class="col-md-4"><label class = "control-label">Product Id</label>
@@ -311,7 +326,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 </div>
                                 <label><h3>Warranty</h3></label>
                                 <div class="row">
-                                    <div class="row-md-12">
+                                    <div class="col-md-12">
                                         <label class="control-label">Product Warranty</label>
                                         <input type="text" name="product_warranty" class="form-control" style="width:200px;" required>
                                     </div>
@@ -341,7 +356,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <label class="clearfix"></label>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <center><button type="button" class="btn btn-primary" onclick="">Add To Database</button></center>
+                                        <center><button type="submit" class="btn btn-primary" onclick="alrt()">Add To Database</button></center>
                                     </div>
                                 </div>
                             </form>
