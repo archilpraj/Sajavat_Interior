@@ -103,6 +103,7 @@ if (isset($_SESSION['user'])) {
                                 $_SESSION['ccart'] = unserialize(serialize($_SESSION['cart']));
                                 $_SESSION['s'] = 0;
                                 $index = 0;
+                                $tpid='';
                                 for ($i = 0; $i < count($_SESSION['ccart']); $i++) {
                                     $_SESSION['s'] += $_SESSION['ccart'][$i]->price * $_SESSION['ccart'][$i]->quantity;
                                     ?>
@@ -112,7 +113,9 @@ if (isset($_SESSION['user'])) {
                                                 <img src="<?php echo $_SESSION['ccart'][$i]->images; ?>" height="100" width="100" class="img-responsive" alt="">
                                             </div>
                                             <div class="cart-item-info">
-                                                <?php $productid = $_SESSION['ccart'][$i]->id; ?>
+                                                <?php $productid = $_SESSION['ccart'][$i]->id;
+                                                $productqty=$_SESSION['ccart'][$i]->quantity;
+                                                $tpid=$tpid.$productid.'|'.$productqty.',';?>
                                                 <h3><a href="#"><?php echo $_SESSION['ccart'][$i]->name; ?></a></h3>
                                                 <p></p>
                                                 <ul class="qty">
