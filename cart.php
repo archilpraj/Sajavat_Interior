@@ -3,68 +3,51 @@ ob_start();
 session_start();
 require 'dbhelp.php';
 require 'item.php';
-if (isset($_GET['product_id']) && !isset($_POST['update'])) {
-    $result = mysqli_query($con, "select product_id,product_name,product_price,product_img from product_bed where product_id='" . $_GET['product_id'] . "'");
-    $product = mysqli_fetch_object($result);
-    $item = new item();
-    $item->id = $product->product_id;
-    $item->name = $product->product_name;
-    $item->price = $product->product_price;
-    $item->images = $product->product_img;
-    $item->quantity = 1;
-    // Check Product is existing in Cart
-    $index = -1;
-    if (isset($_SESSION['cart'])) {
-        $cart = unserialize(serialize($_SESSION['cart']));
-        for ($i = 0; $i < count($cart); $i++)
-            if ($cart[$i]->id == $_GET['product_id']) {
-                $index = $i;
-                break;
-            }
-    }
-    if ($index == -1)
-        $_SESSION['cart'][] = $item;
-    else {
-        $cart[$index]->quantity++;
-        $_SESSION['cart'] = $cart;
-    }
-}
-
-//Delete Product in Cart
-if (isset($_GET['index']) && !isset($_POST['update'])) {
-    $cart = unserialize(serialize($_SESSION['cart']));
-    unset($cart[$_GET['index']]);
-    $cart = array_values($cart);
-    $_SESSION['cart'] = $cart;
-}
-
-//Update Quantity in Cart
-if (isset($_POST['update'])) {
-    $arrQuantity = $_POST['quantity'];
-
-    //Check Valid Quantity Number
-    $valid = 1;
-    for ($i = 0; $i < count($arrQuantity); $i++)
-        if (!is_numeric($arrQuantity[$i]) || $arrQuantity[$i] < 1) {
-            $valid = 0;
-            break;
-        }
-    if ($valid == 1) {
-        $cart = unserialize(serialize($_SESSION['cart']));
-        for ($i = 0; $i < count($cart); $i++) {
-            $cart[$i]->quantity = $arrQuantity[$i];
-        }
-        $_SESSION['cart'] = $cart;
-    } else
-        $error = 'Quantity is InValid';
-}
-if (isset($_GET['v'])) {
-    if ($_GET['v'] == "empty") {
-        unset($_SESSION['cart']);
-    }
-}
+require 'cartlogic.php';
 ?>
-
+<script src="../alert_master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../alert_master/dist/sweetalert.css">
+<script type="text/javascript">
+    function inpl(status)
+    {
+        if (status == 'Login Sucessfull')
+        {
+            swal({
+                title: "Login Status",
+                text: status,
+                type: "success",
+                confirmButtonColor: "#  00ff00",
+                confirmButtonText: "Continue",
+                closeOnConfirm: false
+            },
+            function () {
+                window.location.href = 'admin_dashboard.php';
+            });
+        }
+        else if (status == 'Invalid Credentials!')
+        {
+            swal({
+                title: "Login Status",
+                text: status,
+                type: "error",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Try Login Again?",
+                closeOnConfirm: true
+            });
+        }
+        else
+        {
+            swal({
+                title: "Login Status",
+                text: 'Invalid Response!',
+                type: "error",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Try Login Again?",
+                closeOnConfirm: true
+            });
+        }
+    }
+</script>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -85,19 +68,46 @@ if (isset($_GET['v'])) {
         <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
         <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
         <script>
-            $(document).ready(function () {
-                $('.popup-with-zoom-anim').magnificPopup({
-                    type: 'inline',
-                    fixedContentPos: false,
-                    fixedBgPos: true,
-                    overflowY: 'auto',
-                    closeBtnInside: true,
-                    preloader: false,
-                    midClick: true,
-                    removalDelay: 300,
-                    mainClass: 'my-mfp-zoom-in'
-                });
-            });
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+    });
+        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="alert_master/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="alert_master/dist/sweetalert.css">
+
+        <script type="text/javascript">
+
+    function cempty()
+    {
+        swal({
+            title: "Are you sure?",
+            text: "Your Cart will be cleared!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+                swal("Deleted!", "Cart Cleared", "success");
+                window.location.href = 'cart.php?v=empty';
+            }
+        });
+    }
         </script>
     </head>
     <body>
@@ -119,7 +129,7 @@ if (isset($_GET['v'])) {
                 </div>  
                 <div class="about_box">
                     <ul class="login">
-                        <li class="login_text"><a href="cart.php">Welcome <?php echo $_SESSION['user'];?></a></li>
+                        <li class="login_text"><a href="user_profile.php">Welcome <?php echo $_SESSION['u_fname']; ?></a></li>
                         <li class="wish"><a href="logic.php?val=logout">Logout</a></a></li>
                         <div class='clearfix'></div>
                     </ul>
@@ -147,35 +157,42 @@ if (isset($_GET['v'])) {
                         if (@ $_SESSION['cart']) {
                             ?>
                             <form method="POST">
-                                <table border="1" >
-                                    <tr>
-                                        <th align="center">Images</th>
-                                        <th align="center">Name</th>
-                                        <th align="center">price</th>
-                                        <th align="center">quantity <input type="image" src="images/ie-icon-refresh.png" height="15" width="15"> <input type="hidden" name="update"> </th>
-                                        <th align="center">Sub Total </th>
-                                        <th align="center"></th>
-                                    </tr>
-                                    <?php
-                                    $cart = unserialize(serialize($_SESSION['cart']));
-                                    $s = 0;
-                                    $index = 0;
-                                    for ($i = 0; $i < count($cart); $i++) {
-                                        $s += $cart[$i]->price * $cart[$i]->quantity;
-                                        ?>
-                                        <tr>
-                                            <td align="center"><image src="<?php echo $cart[$i]->images; ?>" height="100" width="100"></td>
-                                            <td align="center"><?php echo $cart[$i]->name; ?></td>
-                                            <td align="center"><?php echo $cart[$i]->price; ?></td>
-                                            <td align="center"><input type="text" value="<?php echo $cart[$i]->quantity; ?>" style=" width: 50px;" name="quantity[]"></td>
-                                            <td align="center"><?php echo $cart[$i]->price * $cart[$i]->quantity; ?></td>
-                                            <td align="center"><a href="cart.php?index=<?php echo $index; ?>" onclick="return confirm('Are you sure?')"><img src="images/close_1.png"></a></td>
-                                        </tr>
-                                        <?php
-                                        $index++;
-                                    }
+                                <?php
+                                $cart = unserialize(serialize($_SESSION['cart']));
+                                $s = 0;
+
+                                $index = 0;
+                                for ($i = 0; $i < count($cart); $i++) {
+                                    $s += $cart[$i]->price * $cart[$i]->quantity;
                                     ?>
-                                </table>
+                                    <div class="cart-header">
+
+                                        <div class="cart-sec simpleCart_shelfItem">
+                                            <div class="cart-item cyc">
+                                                <img src="<?php echo $cart[$i]->images; ?>" height="100" width="100" class="img-responsive" alt="">
+
+                                            </div>
+                                            <div class="cart-item-info">
+                                                <h3><a href="#"><?php echo $cart[$i]->name; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="cart.php?index=<?php echo $index; ?>"><img src="images/close_1.png"></a></h3>
+                                                <p></p>
+                                                <ul class="qty">
+                                                    <li><p>Price : <?php echo $cart[$i]->price; ?></p></li>
+                                                    <li><p>Qty : <input type="number" min="1" max="10" value="<?php echo $cart[$i]->quantity; ?>" style=" width: 50px;" name="quantity[]"> <input type="image" src="images/ie-icon-refresh.png" height="25" width="25"> <input type="hidden" name="update"></p></li>
+                                                    <li><p>Sub Total : <?php echo $cart[$i]->price * $cart[$i]->quantity; ?></p></li>
+                                                </ul>
+                                                <div class="delivery">
+                                                    <span>Delivered in 2-3 bussiness days</span>
+                                                    <div class="clearfix"></div>
+                                                </div>	
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                        </div>
+                                    </div>
+                                    <?php
+                                    $index++;
+                                }
+                                ?>
                             </form>
                             <?php
                         } else {
@@ -220,46 +237,25 @@ if (isset($_GET['v'])) {
 
 
                     <div class="clearfix"></div>
-                    <a class="order" href="#">Place Order</a>
-                    <a class="order" href="cart.php?v=empty" onclick="return confirm('Are you sure?')">Empty Cart</a>
+                    <a class="order" href="payment.php">Place Order</a>
+                    <a class="order" href="#" onclick="cempty()">Empty Cart</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="instagram_top">
-            <div class="instagram text-center">
-                <h3>Our Collections</h3>
-            </div>
-            <ul class="instagram_grid">
-                <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                <div class="clearfix"></div>
-                <div id="small-dialog1" class="mfp-hide">
-                    <div class="pop_up">
-                        <h4>A Sample Photo Stream</h4>
-                        <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                    </div>
-                </div>
-            </ul>
-        </div>
-
-    </div>
-    <?php include 'footer.php'; ?>
+  
+    <?php include'footer.php' ?>
 </body>
 </html>
 <?php
+@$_SESSION['totamt'] = $s;
+@$_SESSION['totqty'] = $cart[$i]->quantity;
 if (isset($_GET["product_id"]) || isset($_GET["index"])) {
     header('Location: cart.php');
 }
-if(!isset($_SESSION['user']))
-{
+if (!isset($_SESSION['user'])) {
     header("location:404.php");
 }
 ob_end_flush();

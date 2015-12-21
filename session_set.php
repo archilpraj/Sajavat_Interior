@@ -20,14 +20,14 @@ if (isset($_SESSION['user'])) {
     </ul>
     <div class="cart_bg">
         <ul class="cart">
-            <a href="checkout.php">
-                <h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
+            <a href="cart.php">
+                <h4><i class="cart_icon"> </i><p>Cart: Rs. <?php echo @$_SESSION['totamt'] ?></p><div class="clearfix"> </div></h4>
             </a>    
         </ul>
     </div>
     <ul class="login">
-        <li class="login_text"><a href="checkout.php">View Cart</a></li>
-        <li class="wish"><a href="checkout.php">Checkout</a></li>
+        <li class="login_text"><a href="about.php">About Us</a></li>
+        <li class="wish"><a href="contact.php">Contact Us</a></li>
         <div class='clearfix'></div>
     </ul><?php } else { ?>
     <ul class="login">

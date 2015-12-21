@@ -104,7 +104,7 @@ if (!isset($_SESSION['admin_uname'])) {
                     else if (req == "disp_dressors")
                     {
                         document.getElementById("p_name").innerHTML = "Dressors";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Frame Material</th><th>Storage Type</th><th>Type</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Frame Material</th><th>Storage Type</th><th>Primary Room</th></tr>";
                     }
                     else if (req == "disp_sofa")
                     {
@@ -154,6 +154,33 @@ if (!isset($_SESSION['admin_uname'])) {
                     xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
                     xmlhttp.send();
                 }
+
+                function add()
+                {
+                    document.getElementById("t_head").innerHTML = "<tr><th>Bed</th><th>Bed Side Table</th><th>Bookshelf Disp Unit</th><th>Dining Tables</th><th>Dressors</th><th>Sofa</th><th>Table</th><th>TV Units</th></tr>";
+                    document.getElementById("t_data").innerHTML = "<tr><td><a href='bed_input_db.php'>Add Bed</a></td><td><a href='bedsidetable_input_db.php'>Add Bed Side Table</a></td><td><a href='bkshlf_input_db.php'>Add Bookshelf Disp Unit</a></td><td><a href='dining_input_db.php'>Add Dining Tables</a></td><td><a href='dressor_input_db.php'>Add Dressors</a></td><td><a href='sofa_input_db.php'>Add Sofa</a></td><td><a href='table_input_db.php'>Add Table</a></td><td><a href='tvunits_input_db.php'>Add TV Units</a></td></tr>";
+                }
+            </script>
+            <script type="text/javascript">
+                function changestatus(a)
+                {
+                    var id1=a.name;
+                    var ord=document.getElementById("order2").value;
+                    var xmlhttp=new XMLHttpRequest();
+                    if(ord=='Completed')
+                    {
+                        xmlhttp.open("GET","admin_func_check.php?val=changestatus&id="+id1,true);
+                        xmlhttp.onreadystatechange= function()
+                        {
+                            if(xmlhttp.readyState==4 && status==200)
+                            {
+                                alert(xmlhttp.responseText);
+                            }
+                        }
+                        xmlhttp.send();
+                    }
+                    
+                }
             </script>
             <style type="text/css">
                 .table#stickyHeader thead {
@@ -164,7 +191,7 @@ if (!isset($_SESSION['admin_uname'])) {
             </style>
         </head>
 
-        <body>
+        <body onload="add()">
 
             <div id="wrapper">
 
@@ -198,10 +225,7 @@ if (!isset($_SESSION['admin_uname'])) {
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
                             <li>
-                                <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="view_feedback.php"><i class="fa fa-envelope fa-fw"></i> Feedbacks</a>
+                                <a href="admin_dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li>
                                 <a data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> View Database <i class="fa fa-fw fa-caret-down"></i></a>

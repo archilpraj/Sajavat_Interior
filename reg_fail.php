@@ -91,30 +91,7 @@ session_start();
                       <center>  <div><font color="df4782"><h2><b>Registration Failed Try Again</b></h2></font></div><br>
                           <img src="images/fail.png" width="100px" height="100px"></center><br>
                 </div>
-                <div class="container">
-                    <div class="instagram_top">
-                        <div class="instagram text-center">
-                            <h3>Our Collections</h3>
-                        </div>
-                        <ul class="instagram_grid">
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                            <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                            <div class="clearfix"></div>
-                            <div id="small-dialog1" class="mfp-hide">
-                                <div class="pop_up">
-                                    <h4>A Sample Photo Stream</h4>
-                                    <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
+          
             <?php include 'footer.php'; ?>
     </body>
 </html>

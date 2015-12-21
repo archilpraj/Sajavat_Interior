@@ -20,11 +20,13 @@ if ($_GET['val'] == 'register') {
     $sql = "INSERT INTO user (user_id, user_password, user_email, user_firstname, user_lastname,user_address,user_city,user_state ,user_pincode, user_phone) VALUES ('$username','$password','$email','$fname','$lname','$address','$city','$state','$pincode','$phone')";
     // $sql="INSERT INTO user (user_id, user_password, user_email) VALUES ('$username','$password','$email')";
     if (mysqli_query($con, $sql)) {
-
+        session_start();
         $_SESSION['user'] = $username;
-        header("location:reg_pass.php");
+        echo "Registration Successful";
+        //header("location:reg_pass.php");
     } else {
-        header("location:reg_fail.php");
+        echo "Registration Failed";
+        //header("location:reg_fail.php");
     }
 } elseif ($_GET['val'] == 'login') {
     $username = $_POST['txtuser'];
@@ -103,51 +105,250 @@ if ($_GET['val'] == 'register') {
     } else {
         echo "Update failed";
     }
-} else if ($_GET['val'] == 'p_beds') {
-    $pcat="product_bed";
-    $sql = "select * from product_bed";
+} else if ($_GET['val'] == 'p_beds' || $_GET['val'] == 'p_bstables' || $_GET['val'] == 'p_dtables' || $_GET['val'] == 'p_tvsets' || $_GET['val'] == 'p_sofas' || $_GET['val'] == 'p_dressers' || $_GET['val'] == 'p_badunits' || $_GET['val'] == 'p_tables') {
+    if ($_GET['val'] == 'p_beds') {
+        $pcat = "product_bed";
+    } else if ($_GET['val'] == 'p_bstables') {
+        $pcat = "bed_side_table";
+    } else if ($_GET['val'] == 'p_dtables') {
+        $pcat = "product_dinning_table";
+    } else if ($_GET['val'] == 'p_tvsets') {
+        $pcat = "product_tv_unit";
+    } else if ($_GET['val'] == 'p_sofas') {
+        $pcat = "product_sofa";
+    } else if ($_GET['val'] == 'p_dressers') {
+        $pcat = "product_dresser_mirror";
+    } else if ($_GET['val'] == 'p_badunits') {
+        $pcat = "product_bookshelf_display_unit";
+    } else if ($_GET['val'] == 'p_tables') {
+        $pcat = "product_table";
+    }
+    session_start();
+    $sql = "select * from $pcat";
     $res = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($res)) {
-        $img = $row['product_img'];
         $pname = $row['product_name'];
         $pprice = $row['product_price'];
-        $ppid = $row['product_id'];
-        $pstock=$row['product_stock'];
-        $pcolor=$row['product_color'];
-        $pwarranty=$row['product_warranty'];
-        $assembly=$row['product_assembly'];
-        $material=$row['product_material'];
-        $storage=$row['storage'];
-        $btype=$row['bed_type'];
-        $h=$row['product_h'];
-        $w=$row['product_w'];
-        $d=$row['product_d'];
-        if($pstock>0)
-        {
-            $stckval='<font color=green>In Stock</font>';
+        $pimg = $row['product_img'];
+        $pstock = $row['product_stock'];
+        $pid = $row['product_id'];
+        if ($pstock > 0) {
+            $stckval = '<font color=green>In Stock</font>';
+        } else {
+            $stckval = '<font color=red>Out Of Stock</font>';
         }
-        else
-        {
-            $stckval='<font color=red>Out Of Stock</font>';
-        }
-        $pdat= "<tr><th>Availability</th><th>Dimensions</th><th>Color</th><th>Warranty</th><th>Assembly</th><th>Product Material</th><th>Storage</th><th>Bed Type</th></tr><tr><td>$stckval</td><td>H=$h+ W=$w+ D=$d</td><td>$pcolor</td><td>$pwarranty</td><td>$assembly</td><td>$material</td><td>$storage</td><td>$btype</td></tr>";
+        //$pdat= "<tr><th>Availability</th><th>Dimensions</th><th>Color</th><th>Warranty</th><th>Assembly</th><th>Product Material</th><th>Storage</th><th>Bed Type</th></tr><tr><td>$stckval</td><td>H=$h+ W=$w+ D=$d</td><td>$pcolor</td><td>$pwarranty</td><td>$assembly</td><td>$material</td><td>$storage</td><td>$btype</td></tr>";
         echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>";
-        echo "<a href='single.php?ppid=$ppid&pcat=$pcat&pdat=$pdat'>";
+        echo "<a href='single.php?id=$pid&tb=$pcat'>";
         echo "<div class='inner_content clearfix'>";
         echo "<div class='product_image'>";
-        echo "<img src='$img' class='img-responsive' height='700px' width='350px'/>";
+        echo "<img src='$pimg' class='img-responsive' height='700px' width='350px'/>";
         //echo "<a href='cart.php' class='button item_add item_1'></a>";
         echo "<div class='product_container'>";
         echo "<div class='cart-left'>";
         echo "<p class='title'>$pname</p>";
         echo "</div><br/>";
         echo "<span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>";
-        echo "<center><p><button type='button' class='btn btn-primary' value='$ppid' onclick='updcart(this.value)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+        echo "</a>";
+        if (isset($_SESSION['user'])) {
+            echo "<center><p><button type='button' class='btn btn-primary' name='$pcat' value='$pid' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+        }
         echo "<div class='clearfix'></div>";
         echo "</div>";
         echo "</div>";
         echo "</div>";
-        echo "</a>";
+        //echo "</a>";
         echo "</div>";
+    }
+} else if ($_GET['val'] == 'loadb') {
+    $bsql = "select * from product_bed order by RAND() LIMIT 3";
+    $res = mysqli_query($con, $bsql);
+    $pcat = "product_bed";
+    session_start();
+    while ($row = mysqli_fetch_array($res)) {
+        $pid = $row['product_id'];
+        $pname = $row['product_name'];
+        $pimg = $row['product_img'];
+        $pprice = $row['product_price'];
+        echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>";
+        echo "<a href='single.php?id=$pid&tb=$pcat'>";
+        echo "<div class='inner_content clearfix'>";
+        echo "<div class='product_image'>";
+        echo "<img src='$pimg' class='img-responsive' height='700px' width='350px'/>";
+        echo "<div class='product_container'>";
+        echo "<div class='cart-left'>";
+        echo "<p class='title'>$pname</p>";
+        echo "</div><br/>";
+        echo "<span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>";
+        echo "</a>";
+        if (isset($_SESSION['user'])) {
+            echo "<center><p><button type='button' class='btn btn-primary' value='$pid' name='$pcat' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+        }
+        echo "<div class='clearfix'></div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    }
+} else if ($_GET['val'] == 'loadtv') {
+    $bsql = "select * from product_tv_unit order by RAND() LIMIT 3";
+    $res = mysqli_query($con, $bsql);
+    $pcat = "product_tv_unit";
+    session_start();
+    while ($row = mysqli_fetch_array($res)) {
+        $pid = $row['product_id'];
+        $pname = $row['product_name'];
+        $pimg = $row['product_img'];
+        $pprice = $row['product_price'];
+        echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>";
+        echo "<a href='single.php?id=$pid&tb=$pcat'>";
+        echo "<div class='inner_content clearfix'>";
+        echo "<div class='product_image'>";
+        echo "<img src='$pimg' class='img-responsive' height='700px' width='350px'/>";
+        echo "<div class='product_container'>";
+        echo "<div class='cart-left'>";
+        echo "<p class='title'>$pname</p>";
+        echo "</div><br/>";
+        echo "<span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>";
+        echo "</a>";
+        if (isset($_SESSION['user'])) {
+            echo "<center><p><button type='button' class='btn btn-primary' value='$pid' name='$pcat' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+        }
+        echo "<div class='clearfix'></div>
+        </div>
+        </div>
+        </div>
+        
+        </div>";
+    }
+} else if ($_GET['val'] == 'loadtb') {
+    $bsql = "select * from product_table order by RAND() LIMIT 3,3";
+    $res = mysqli_query($con, $bsql);
+    $pcat = "product_table";
+    session_start();
+    while ($row = mysqli_fetch_array($res)) {
+        $pid = $row['product_id'];
+        $pname = $row['product_name'];
+        $pimg = $row['product_img'];
+        $pprice = $row['product_price'];
+        echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>
+        <a href='single.php?id=$pid&tb=$pcat'>
+        <div class='inner_content clearfix'>
+        <div class='product_image'>
+        <img src='$pimg' class='img-responsive' height='700px' width='350px'/>
+        <div class='product_container'>
+        <div class='cart-left'>
+        <p class='title'>$pname</p>
+        </div><br/>
+        <span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>
+        </a>";
+        if (isset($_SESSION['user'])) {
+            echo "<center><p><button type='button' class='btn btn-primary' value='$pid' name='$pcat' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+        }
+        echo "<div class='clearfix'></div>
+        </div>
+        </div>
+        </div>
+        
+        </div>";
+    }
+} else if ($_GET['val'] == 'ranb') {
+    $sql = "select * from product_bed order by RAND()";
+    $res = mysqli_query($con, $sql);
+    session_start();
+    $row = mysqli_fetch_array($res);
+    $pid = $row['product_id'];
+    $pcat = "product_bed";
+    $pname = $row['product_name'];
+    $pimg = $row['product_img'];
+    $pprice = $row['product_price'];
+    echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>
+        <a href='single.php?id=$pid&tb=$pcat'>
+        <div class='inner_content clearfix'>
+        <div class='product_image'>
+        <img src='$pimg' class='img-responsive' height='700px' width='350px'/>
+        <div class='product_container'>
+        <div class='cart-left'>
+        <p class='title'>$pname</p>
+        </div><br/>
+        <span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>
+        </a>";
+    if (isset($_SESSION['user'])) {
+        echo "<center><p><button type='button' class='btn btn-primary' value='$pid' name='$pcat' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+    }
+    echo "<div class='clearfix'></div>
+        </div>
+        </div>
+        </div>
+        
+        </div>";
+} else if ($_GET['val'] == 'rantv') {
+    $sql = "select * from product_tv_unit order by RAND()";
+    $res = mysqli_query($con, $sql);
+    session_start();
+    $row = mysqli_fetch_array($res);
+    $pid = $row['product_id'];
+    $pcat = "product_tv_unit";
+    $pname = $row['product_name'];
+    $pimg = $row['product_img'];
+    $pprice = $row['product_price'];
+    echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>
+        <a href='single.php?id=$pid&tb=$pcat'>
+        <div class='inner_content clearfix'>
+        <div class='product_image'>
+        <img src='$pimg' class='img-responsive' height='700px' width='350px'/>
+        <div class='product_container'>
+        <div class='cart-left'>
+        <p class='title'>$pname</p>
+        </div><br/>
+        <span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>
+        </a>";
+    if (isset($_SESSION['user'])) {
+        echo "<center><p><button type='button' class='btn btn-primary' value='$pid' name='$pcat' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+    }
+    echo "<div class='clearfix'></div>
+        </div>
+        </div>
+        </div>
+        
+        </div>";
+} else if ($_GET['val'] == 'ransofa') {
+    $sql = "select * from product_sofa order by RAND()";
+    $res = mysqli_query($con, $sql);
+    session_start();
+    $row = mysqli_fetch_array($res);
+    $pid = $row['product_id'];
+    $pcat = "product_sofa";
+    $pname = $row['product_name'];
+    $pimg = $row['product_img'];
+    $pprice = $row['product_price'];
+    echo "<div class='col_1_of_3 span_1_of_3 simpleCart_shelfItem'>
+        <a href='single.php?id=$pid&tb=$pcat'>
+        <div class='inner_content clearfix'>
+        <div class='product_image'>
+        <img src='$pimg' class='img-responsive' height='700px' width='350px'/>
+        <div class='product_container'>
+        <div class='cart-left'>
+        <p class='title'>$pname</p>
+        </div><br/>
+        <span class='amount item_price'><i class='fa fa-inr'></i>$pprice</span>
+        </a>";
+    if (isset($_SESSION['user'])) {
+        echo "<center><p><button type='button' class='btn btn-primary' value='$pid' name='$pcat' onclick='cartpdate(this)';<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>Add To Cart</button></p></center>";
+    }
+    echo "<div class='clearfix'></div>
+        </div>
+        </div>
+        </div>
+        
+        </div>";
+} elseif ($_GET['val'] == 'bankredirect') {
+    $a = $_POST['bank'];
+    if ($a == "bob") {
+        header("Location:https://www.bob.com");
+    } elseif ($a == "sbi") {
+        header("Location:https://www.sbi.com");
+    } elseif ($a == "hdfc") {
+        header("Location:https://www.hdfc.com");
     }
 }

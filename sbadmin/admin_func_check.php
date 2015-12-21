@@ -101,7 +101,7 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['product_desc'] . "</center></td>";
         echo "<td><center>" . $row['frame_material'] . "</center></td>";
         echo "<td><center>" . $row['storage_type'] . "</center></td>";
-        echo "<td><center>" . $row['type'] . "</center></td>";
+        echo "<td><center>" . $row['primary_room'] . "</center></td>";
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_sofa") {
@@ -160,6 +160,7 @@ if ($_GET['val'] == "add_bed") {
     $sql = "select * from new_order";
     $qry = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($qry)) {
+        $id = $row['order_id'];
         echo "<tr>";
         echo "<td><center>" . $row['order_id'] . "</center></td>";
         echo "<td><center>" . $row['product_id'] . "</center></td>";
@@ -167,7 +168,8 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['payment_mode'] . "</center></td>";
         echo "<td><center>" . $row['order_date'] . "</center></td>";
         echo "<td><center>" . $row['total_amt'] . "</center></td>";
-        echo "<td><center>" . $row['order_status'] . "</center></td>";
+        echo "<td><center><select id='order2' name='$id' onchange='changestatus(this)'><option>" . $row['order_status'] . "</option><option>Completed</option></select>";
+        //echo "<td><center>" . $row['order_status'] . "</center></td>";
         echo "</tr>";
     }
 } else if ($_GET['val'] == "old_order") {
@@ -186,6 +188,24 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['delivery_date'] . "</center></td>";
         echo "</tr>";
     }
+} else if ($_GET['val'] == 'changestatus') {
+    $con= mysqli_connect("localhost","root","","sj_database");
+    $id = $_GET['id'];
+    $sql = "select * from new_order where order_id=" . $id;
+    $res = mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($res);
+    $pname = $row['product_id'];
+    $uid = $row['user_id'];
+    $totamt = $row['total_amt'];
+    $pay = $row['payment_mode'];
+    $os = "Completed";
+    $od = $row['order_date'];
+    $dt=date('Y-m-d');
+    $sql1 = "delete from new_order where order_id=" . $id;
+    mysqli_query($con, $sql1);
+    $sql2 = "insert into old_order(order_id,product_id,user_id,total_amt,payment_mode,order_status,order_date,delivery_date) values($id,'$pname','$uid',$totamt,'$pay','$os','$od','$dt')";
+    mysqli_query($con, $sql2);
+    echo "Done";
 } else if ($_GET['val'] == "update") {
     update($_POST['U_ID'], $_POST['U_NAME'], $_POST['U_CNCT'], $_POST['U_DOB'], $_POST['U_GENDER'], $_POST['U_ADD'], $_POST['U_DATEOC'], $_POST['U_DIS'], $_POST['U_MED'], $_POST['U_CFEES'], $_POST['U_TFEES']);
 } else if ($_GET['val'] == "delete") {

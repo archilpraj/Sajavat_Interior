@@ -1,5 +1,4 @@
 <?php
-
 $type = $_GET['tab'];
 
 $up_connect = mysqli_connect("localhost", "root", "", "sj_database");
@@ -44,12 +43,11 @@ if ($type = "bed") {
 
     $up_qry = "Insert Into product_bed values ('$up_id','$up_name','$target_file1','$target_file2','$target_file3','$target_file4','$target_file5','$target_file6',$up_price,'$up_desc',$up_stock,$up_h,$up_w,'$up_color','$up_warranty',$up_d,'$up_assembly','$up_material','$up_storage','$up_bed_type')";
     $up_res = mysqli_query($up_connect, $up_qry);
-} else if ($_GET['tab'] = "bksfunit") {
+} else if ($_GET['tab'] = "bkshlf") {
     $up_id = $_POST['product_id'];
     $up_name = $_POST['product_name'];
     $up_price = $_POST['product_price'];
     $up_stock = $_POST['product_stock'];
-    $up_shape = $_POST['shape'];
     $up_material = $_POST['material'];
     $up_desc = $_POST['product_desc'];
     $up_assembly = $_POST['assembly'];
@@ -60,7 +58,7 @@ if ($type = "bed") {
 
 
 
-    $target_dir = "../Pr_Images/Bookshelf_dis_unit/";
+    $target_dir = "../Pr_Images/Bookshelf/";
     $target_file1 = $target_dir . basename($_FILES["image1"]["name"]);
     $target_file2 = $target_dir . basename($_FILES["image2"]["name"]);
     $target_file3 = $target_dir . basename($_FILES["image3"]["name"]);
@@ -80,23 +78,25 @@ if ($type = "bed") {
 
     $up_qry = "Insert Into product_bookshelf_display_unit values ('$up_id','$up_name',$up_price,$up_stock,'$target_file1','$target_file2','$target_file3','$target_file4','$target_file5','$target_file6',$up_shape,'$up_material',$up_desc,$up_assembly,$up_floor_standing,'$up_storage_type','$up_with_storage',$up_size)";
     $up_res = mysqli_query($up_connect, $up_qry);
-} else if ($_GET['tab'] = "sofa") {
+} else if ($_GET['tab'] = "bstable") {
     $up_id = $_POST['product_id'];
     $up_name = $_POST['product_name'];
     $up_price = $_POST['product_price'];
     $up_stock = $_POST['product_stock'];
-    $up_shape = $_POST['shape'];
-    $up_material = $_POST['material'];
+    $up_storage = $_POST['product_storage'];
+    $up_material = $_POST['product_material'];
     $up_desc = $_POST['product_desc'];
-    $up_assembly = $_POST['assembly'];
-    $up_floor_standing = $_POST['floor_standing'];
-    $up_storage_type = $_POST['storage_type'];
-    $up_with_storage = $_POST['with_storage'];
-    $up_size = $_POST['size'];
+    $up_ttshape = $_POST['product_ttshape'];
+    $up_style = $_POST['product_style'];
+    $up_tshape = $_POST['product_tshape'];
+    $up_shape = $_POST['shape'];
+    $up_tmaterial = $_POST['tmaterial'];
+    $up_color = $_POST['color'];
+    $up_table_type = $_POST['table_type'];
 
 
 
-    $target_dir = "../Pr_Images/Bookshelf_dis_unit/";
+    $target_dir = "../Pr_Images/Bedsidetable/";
     $target_file1 = $target_dir . basename($_FILES["image1"]["name"]);
     $target_file2 = $target_dir . basename($_FILES["image2"]["name"]);
     $target_file3 = $target_dir . basename($_FILES["image3"]["name"]);
@@ -111,10 +111,9 @@ if ($type = "bed") {
     move_uploaded_file($_FILES["image5"]["tmp_name"], $target_file5);
     move_uploaded_file($_FILES["image6"]["tmp_name"], $target_file6);
 
-    echo "Successfully Added Data To The Database";
 
-
-    $up_qry = "Insert Into product_bookshelf_display_unit values ('$up_id','$up_name',$up_price,$up_stock,'$target_file1','$target_file2','$target_file3','$target_file4','$target_file5','$target_file6',$up_shape,'$up_material',$up_desc,$up_assembly,$up_floor_standing,'$up_storage_type','$up_with_storage',$up_size)";
+    $up_qry = "Insert Into bed_side_table values ('$up_id','$up_name',$up_price,$up_stock,'$up_desc','$target_file1','$target_file2','$target_file3','$target_file4','$target_file5','$target_file6','$up_material','$up_storage','$up_ttshape','$up_style','$up_tshape','$up_material','$up_shape','$up_color','$up_table_type')";
     $up_res = mysqli_query($up_connect, $up_qry);
+    header('location:bedsidetable_input_db.php');
 }
 ?>

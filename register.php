@@ -39,7 +39,75 @@ if (isset($_SESSION['user'])) {
                     });
                 });
             </script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="alert_master/dist/sweetalert.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="alert_master/dist/sweetalert.css">
             <script type="text/javascript">
+                function regal(status)
+                {
+                    if (status == 'Registration Successful')
+                    {
+                        swal({
+                            title: "Registration status",
+                            text: status,
+                            type: "success",
+                            confirmButtonColor: "#  00ff00",
+                            confirmButtonText: "Continue",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            window.location.href = 'index.php';
+                        });
+                    }
+                    else if (status == 'Registration Failed')
+                    {
+                        swal({
+                            title: "Registration Status",
+                            text: status,
+                            type: "error",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Try Login Again?",
+                            closeOnConfirm: true
+                        });
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Registration Status",
+                            text: 'Invalid Response!',
+                            type: "error",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Please try again later",
+                            closeOnConfirm: true
+                        });
+                    }
+                }
+                function register1()
+                {
+                    var xmlhttp = new XMLHttpRequest();
+                    var fname=document.getElementById("txtfname").value;
+                    var lname=document.getElementById("txtlname").value;
+                    var uname=document.getElementById("txtusername").value;
+                    var email=document.getElementById("txtemail").value;
+                    var address=document.getElementById("txtaddress").value;
+                    var pass=document.getElementById("txtpassword").value;
+                    var city=document.getElementById("txtcity").value;
+                    var state=document.getElementById("txtstate").value;
+                    var pincode=document.getElementById("txtpincode").value;
+                    var cn=document.getElementById("txtphone").value;
+                    xmlhttp.open("POST","logic.php?val=register",true);
+                    xmlhttp.onreadystatechange= function()
+                    {
+                        if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                            var status= xmlhttp.responseText;
+                            regal(status);
+                        }
+                    }
+                    xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                    xmlhttp.send("txtusername="+uname+"&txtfname="+fname+"&txtlname="+lname+"&txtemail="+email+"&txtaddress="+address+"&txtpassword="+pass+"&txtcity="+city+"&txtstate="+state+"&txtpincode="+pincode+"&txtphone="+cn);
+                    
+                }
                 function checkfld(f)
                 {
                     //alert("th");
@@ -141,7 +209,7 @@ if (isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-            <form name="register_form" action="logic.php?val=register" method="POST">
+            <form name="register_form" method="POST">
                 <div class="main">
                     <div class="container">
                         <div class="register">
@@ -175,7 +243,7 @@ if (isset($_SESSION['user'])) {
 
                                 <div>
                                     <span>Address <font color="red">*</font></span>
-                                    <textarea required name="txtaddress"></textarea>
+                                    <textarea id="txtaddress" required name="txtaddress"></textarea>
                                 </div>
 
                                 <div>
@@ -211,36 +279,14 @@ if (isset($_SESSION['user'])) {
                                     <input type="text"  name="txtphone" id="txtphone" maxlength="10" required/><br>
                                 </div>
                             </div><br>
-                            <input type="submit"  class="btn btn-default"value="Submit" id="submitbtn" disabled="true"/>
+                            <input type="button"  class="btn btn-default"value="Submit" onclick="register1()" id="submitbtn" disabled="true"/>
 
                         </div>
                     </div>
                 </div>
             </form>
 
-            <div class="container">
-                <div class="instagram_top">
-                    <div class="instagram text-center">
-                        <h3>Our Collections</h3>
-                    </div>
-                    <ul class="instagram_grid">
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                        <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                        <div class="clearfix"></div>
-                        <div id="small-dialog1" class="mfp-hide">
-                            <div class="pop_up">
-                                <h4>A Sample Photo Stream</h4>
-                                <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            
         <?php include 'footer.php';?>
     </body>
     </html>	

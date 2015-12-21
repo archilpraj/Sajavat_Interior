@@ -75,15 +75,15 @@ $sql="select * from user where user_id='".@$_SESSION['user']."'";
                                 <div class='clearfix'></div>
                             </ul>
                             <div class="cart_bg">
-                                <ul class="cart">
-                                    <a href="checkout.php">
-                                        <h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
-                                    </a>    
-                                </ul>
-                            </div>
+                            <ul class="cart">
+                                <a href="cart.php">
+                                    <h4><i class="cart_icon"> </i><p>Cart: Rs. <?php echo @$_SESSION['totamt'] ?></p><div class="clearfix"> </div></h4>
+                                </a>    
+                            </ul>
+                        </div>
                             <ul class="login">
-                                <li class="login_text"><a href="checkout.php">View Cart</a></li>
-                                <li class="wish"><a href="checkout.php">Checkout</a></li>
+                                <li class="login_text"><a href="index.php">Home</a></li>
+                                <li class="wish"><a href="contact.php">Contact Us</a></li>
                                 <div class='clearfix'></div>
                             </ul><?php } else { ?>
                             <ul class="login">
@@ -113,33 +113,11 @@ $sql="select * from user where user_id='".@$_SESSION['user']."'";
                         <div class="well"> ‘Home is where the heart is’, and who are we to disagree.
                             There is a big need for good quality, well-designed, competitively priced and dependable furniture. Indian home-makers are looking for a solution that could help them make beautiful homes, without too much hassle. Existing brands were either poor on quality and service or too highly priced.
                             <br><br>Wondering if there could be a better solution, the founders spent close to 6 months understanding the very basics of the furniture industry and the home décor space, from the raw materials stage through the entire manufacturing process to packaging and shipping the products across India. After some intense planning, trials and discussions with the best manufacturers across India and the world, and hundreds of consumer interviews, the founders narrowed down on a solution that could get distinctive products, manufactured well at prices that consumers would find practical.
-                            And thus was born the journey of Urban Ladder. We present to you our solution which we will strive to improve every single day of our lives.Our vision is to set global benchmarks for distinctive products, consumer experiences and honest best practices.</div>
+                            . We present to you our solution which we will strive to improve every single day of our lives.Our vision is to set global benchmarks for distinctive products, consumer experiences and honest best practices.</div>
 
                     </div>
                 </div>
-                <div class="container">
-                    <div class="instagram_top">
-                        <div class="instagram text-center">
-                            <h3>Our Collections</h3>
-                        </div>
-                        <ul class="instagram_grid">
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                            <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                            <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                            <div class="clearfix"></div>
-                            <div id="small-dialog1" class="mfp-hide">
-                                <div class="pop_up">
-                                    <h4>A Sample Photo Stream</h4>
-                                    <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-
-                </div>
+               
             </div>
             <?php include 'footer.php'; ?>
     </body>

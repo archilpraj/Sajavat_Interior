@@ -39,57 +39,14 @@ include 'dbhelp.php'
                 });
             });
         </script>
-        <script type="text/javascript">
-            function disppro(a)
-            {
-                if(a=="p_beds")
-                {
-                    document.getElementById("p_title").innerHTML="Beds Collection";
-                }
-                else if(a=="p_bstables")
-                {
-                    document.getElementById("p_title").innerHTML="Bed Side Tables Collection";
-                }
-                else if(a=="p_dtables")
-                {
-                    document.getElementById("p_title").innerHTML="Dining Tables Collection";
-                }
-                else if(a=="p_tvsets")
-                {
-                    document.getElementById("p_title").innerHTML="TV Sets Collection";
-                }
-                else if(a=="p_sofas")
-                {
-                    document.getElementById("p_title").innerHTML="Sofas Collection";
-                }
-                else if(a=="p_dressers")
-                {
-                    document.getElementById("p_title").innerHTML="Dressers Collection";
-                }
-                else if(a=="p_badunits")
-                {
-                    document.getElementById("p_title").innerHTML="BookShelf and Display Units Collection";
-                }
-                else if(a=="p_tables")
-                {
-                    document.getElementById("p_title").innerHTML="Tables Collection";
-                }
-                
-                var xmlhttp=new XMLHttpRequest();
-                xmlhttp.open("GET","logic.php?val="+a,true);
-                xmlhttp.onreadystatechange = function ()
-                {
-                    if(xmlhttp.readyState==4 && xmlhttp.status==200)
-                    {
-                        var pdata=xmlhttp.responseText;
-                        document.getElementById("pdata1").innerHTML=pdata;
-                    }
-                }
-                xmlhttp.send();
-            }
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="alert_master/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="alert_master/dist/sweetalert.css">
+
+        <script src="js/logicpro.js" type="text/javascript">
         </script>
     </head>
-    <body>
+    <body onload="dispran()">
         <div class="header">	
             <div class="container"> 
                 <div class="header-top">
@@ -110,8 +67,8 @@ include 'dbhelp.php'
                 </div>  
                 <div class="banner_wrap">
                     <div class="bannertop_box">
-                      <?php include 'session_set.php';?>
-                        </div>
+                        <?php include 'session_set.php'; ?>
+                    </div>
 
                     <div class='clearfix'></div>
                 </div>
@@ -123,7 +80,7 @@ include 'dbhelp.php'
                     <div class="row">
                         <div class="col-md-3">
                             <div class="menu_box">
-                                <h3 class="menu_head">Products</h3>
+                                <h3 class="menu_head"><a href="products.php">Products</a></h3>
                                 <ul class="nav">
                                     <li><a href="#" name="p_beds" onclick="disppro(this.name)">Beds</a></li>
                                     <li><a href="#" name="p_bstables" onclick="disppro(this.name)">Bed Side Tables</a></li>
@@ -148,30 +105,7 @@ include 'dbhelp.php'
                 </div>
             </div>
 
-            <div class="container">
-                <div class="instagram_top">
-                    <div class="instagram text-center">
-                        <h3>Our Collections</h3>
-                    </div>
-                    <ul class="instagram_grid">
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                        <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                        <div class="clearfix"></div>
-                        <div id="small-dialog1" class="mfp-hide">
-                            <div class="pop_up">
-                                <h4>A Sample Photo Stream</h4>
-                                <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
+          
         <?php include 'footer.php'; ?>
     </body>
 </html>		

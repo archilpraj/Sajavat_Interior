@@ -38,8 +38,63 @@ include 'dbhelp.php'
                 });
             });
         </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="alert_master/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="alert_master/dist/sweetalert.css">
+
+        <script src="js/logicpro.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            function loadtb()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "logic.php?val=loadtv", true);
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var resp = xmlhttp.responseText;
+                        //alert(resp);
+                        document.getElementById("ptvs").innerHTML = resp;
+                    }
+                }
+                xmlhttp.send();
+            }
+            function loadtv()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "logic.php?val=loadtb", true);
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var resp = xmlhttp.responseText;
+                        //alert(resp);
+                        document.getElementById("ptables").innerHTML = resp;
+                    }
+                }
+                xmlhttp.send();
+            }
+            function loadb()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "logic.php?val=loadb", true);
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var resp = xmlhttp.responseText;
+                        //alert(resp);
+                        document.getElementById("pbeds").innerHTML = resp;
+                    }
+                }
+                xmlhttp.send();
+                loadtv();
+                loadtb();
+            }
+        </script>
     </head>
-    <body>
+    <body onload="loadb()">
         <div class="header">	
             <div class="container"> 
                 <div class="header-top">
@@ -60,7 +115,7 @@ include 'dbhelp.php'
                 </div>  
                 <div class="banner_wrap">
                     <div class="bannertop_box">
-                      <?php include 'session_set.php';?>
+                        <?php include 'session_set.php'; ?>
                         <div class="welcome_box">
                             <h3>Welcome to Sajavat Interior</h3>
                             <p>This Is How We Do It. Bringing Furniture You Love With Love</p>
@@ -87,254 +142,19 @@ include 'dbhelp.php'
 
                         </div>
                         <div class="col-md-9">
-                            <h3 class="m_1">New Products</h3>
-                            <div class="content_grid">
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic1.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$2300.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>		
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$1500.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$2000.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="content_grid">
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic4.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$1700.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic5.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$800.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic6.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$199.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <h3 class="m_2">Top Products</h3>
-                            <div class="content_grid">
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic7.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>		
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$4500.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic8.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>		
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$1050.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic13.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$2000.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <h3 class="m_2">Sale Products</h3>
-                            <div class="content_grid">
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic10.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>		
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$99.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic11.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$60.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1"> 
-                                    <a href="single.php">
-                                        <div class="inner_content clearfix">
-                                            <div class="product_image">
-                                                <img src="images/pic12.jpg" class="img-responsive" alt=""/>
-                                                <a href="" class="button item_add item_1"> </a>	
-                                                <div class="product_container">
-                                                    <div class="cart-left">
-                                                        <p class="title">Lorem Ipsum 2015</p>
-                                                    </div>
-                                                    <span class="amount item_price">$900.00</span>
-                                                    <div class="clearfix"></div>
-                                                </div>		
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                            <h3 class="m_1">New Beds</h3>
+                            <div id="pbeds"></div>
+                            <h3 class="m_2">New Tables</h3>
+                            <div id="ptables"></div>
+                            <br>
+                            <h3 class="m_2">New TV Units</h3>
+                            <div id="ptvs"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="instagram_top">
-                    <div class="instagram text-center">
-                        <h3>Our Collections</h3>
-                    </div>
-                    <ul class="instagram_grid">
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                        <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                        <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                        <div class="clearfix"></div>
-                        <div id="small-dialog1" class="mfp-hide">
-                            <div class="pop_up">
-                                <h4>A Sample Photo Stream</h4>
-                                <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
+           
         <?php include 'footer.php'; ?>
     </body>
 </html>		
