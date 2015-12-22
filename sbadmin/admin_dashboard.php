@@ -84,52 +84,52 @@ if (!isset($_SESSION['admin_uname'])) {
                     if (req == "disp_bed")
                     {
                         document.getElementById("p_name").innerHTML = "Beds";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Color</th><th>Material</th><th>Bed Type</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Color</th><th>Material</th><th>Bed Type</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_bed_side_table")
                     {
                         document.getElementById("p_name").innerHTML = "Bed Side Tables";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Color</th><th>Material</th><th>Table Type</th><th>Table Style</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Color</th><th>Material</th><th>Table Type</th><th>Table Style</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_bookshlf_disp_unit")
                     {
                         document.getElementById("p_name").innerHTML = "BookShelf Display Units";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Shape</th><th>Material</th><th>Storage Type</th><th>Floor Standing</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Shape</th><th>Material</th><th>Storage Type</th><th>Floor Standing</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_d_table")
                     {
                         document.getElementById("p_name").innerHTML = "Dining Tables";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Shape</th><th>Material</th><th>Storage Type</th><th>Floor Standing</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Shape</th><th>Material</th><th>Storage Type</th><th>Floor Standing</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_dressors")
                     {
                         document.getElementById("p_name").innerHTML = "Dressors";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Frame Material</th><th>Storage Type</th><th>Primary Room</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Frame Material</th><th>Storage Type</th><th>Primary Room</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_sofa")
                     {
                         document.getElementById("p_name").innerHTML = "Sofas";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Primary Material</th><th>Room Type</th><th>Colour</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Primary Material</th><th>Room Type</th><th>Colour</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_table")
                     {
                         document.getElementById("p_name").innerHTML = "Tables";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Material</th><th>Shape</th><th>Size</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Material</th><th>Shape</th><th>Size</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "disp_tv_unit")
                     {
                         document.getElementById("p_name").innerHTML = "TV Units";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Wall Mount</th><th>Floor Standing</th><th>Primary Room</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Product ID</th><th>Product Name</th><th>Product Image</th><th>Price<br>INR <i class='fa fa-rupee'></i></th><th>Stock</th><th>Description</th><th>Wall Mount</th><th>Floor Standing</th><th>Primary Room</th><th>Update</th><th>Delete</th></tr>";
                     }
                     else if (req == "new_order")
                     {
                         document.getElementById("p_name").innerHTML = "New Orders";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product ID</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product Name</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th></tr>";
                     }
                     else if (req == "old_order")
                     {
                         document.getElementById("p_name").innerHTML = "Old Orders";
-                        document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product ID</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th><th>Delivery Date</th></tr>";
+                        document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product Name</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th><th>Delivery Date</th></tr>";
                     }
                     //alert(req);
                     var xmlhttp;

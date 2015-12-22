@@ -26,12 +26,14 @@ if ($_GET['val'] == "add_bed") {
         echo "<tr>";
         echo "<td><center>" . $row['product_id'] . "</center></td>";
         echo "<td><center>" . $row['product_name'] . "</center></td>";
-        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . "></center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . " /></center></td>";
         echo "<td><center>" . $row['product_price'] . "</center></td>";
         echo "<td><center>" . $row['product_stock'] . "</center></td>";
         echo "<td><center>" . $row['product_color'] . "</center></td>";
         echo "<td><center>" . $row['product_material'] . "</center></td>";
         echo "<td><center>" . $row['bed_type'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_bed&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_bed'>DELETE</a><center></td>";
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_bed_side_table") {
@@ -50,6 +52,10 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['product_material'] . "</center></td>";
         echo "<td><center>" . $row['product_table_type'] . "</center></td>";
         echo "<td><center>" . $row['product_style'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=bed_side_table&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=bed_side_table'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_bookshlf_disp_unit") {
@@ -68,6 +74,10 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['material'] . "</center></td>";
         echo "<td><center>" . $row['storage_type'] . "</center></td>";
         echo "<td><center>" . $row['floor_standing'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_bookshelf_display_unit&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_bookshelf_display_unit'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_d_table") {
@@ -85,6 +95,10 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['table_material'] . "</center></td>";
         echo "<td><center>" . $row['material'] . "</center></td>";
         echo "<td><center>" . $row['cushain_type'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_dinning_table&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_dinning_table'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_dressors") {
@@ -102,6 +116,10 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['frame_material'] . "</center></td>";
         echo "<td><center>" . $row['storage_type'] . "</center></td>";
         echo "<td><center>" . $row['primary_room'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_dresser_mirror&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_dresser_mirror'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_sofa") {
@@ -119,6 +137,10 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['primary_material'] . "</center></td>";
         echo "<td><center>" . $row['room_type'] . "</center></td>";
         echo "<td><center>" . $row['colour'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_sofa&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_sofa'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_table") {
@@ -136,6 +158,10 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['material'] . "</center></td>";
         echo "<td><center>" . $row['shape'] . "</center></td>";
         echo "<td><center>" . $row['size'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_table&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_table'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "disp_tv_unit") {
@@ -153,6 +179,9 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center>" . $row['wall_mount'] . "</center></td>";
         echo "<td><center>" . $row['floor_standing'] . "</center></td>";
         echo "<td><center>" . $row['primary_room'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_tv_unit&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_tv_unit'>DELETE</a><center></td>";
+
         echo "</tr>";
     }
 } else if ($_GET['val'] == "new_order") {
@@ -163,7 +192,7 @@ if ($_GET['val'] == "add_bed") {
         $id = $row['order_id'];
         echo "<tr>";
         echo "<td><center>" . $row['order_id'] . "</center></td>";
-        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
         echo "<td><center>" . $row['user_id'] . "</center></td>";
         echo "<td><center>" . $row['payment_mode'] . "</center></td>";
         echo "<td><center>" . $row['order_date'] . "</center></td>";
@@ -179,7 +208,7 @@ if ($_GET['val'] == "add_bed") {
     while ($row = mysqli_fetch_array($qry)) {
         echo "<tr>";
         echo "<td><center>" . $row['order_id'] . "</center></td>";
-        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
         echo "<td><center>" . $row['user_id'] . "</center></td>";
         echo "<td><center>" . $row['payment_mode'] . "</center></td>";
         echo "<td><center>" . $row['order_date'] . "</center></td>";
@@ -189,21 +218,21 @@ if ($_GET['val'] == "add_bed") {
         echo "</tr>";
     }
 } else if ($_GET['val'] == 'changestatus') {
-    $con= mysqli_connect("localhost","root","","sj_database");
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
     $id = $_GET['id'];
     $sql = "select * from new_order where order_id=" . $id;
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($res);
-    $pname = $row['product_id'];
+    $pname = $row['product_name'];
     $uid = $row['user_id'];
     $totamt = $row['total_amt'];
     $pay = $row['payment_mode'];
     $os = "Completed";
     $od = $row['order_date'];
-    $dt=date('Y-m-d');
+    $dt = date('Y-m-d');
     $sql1 = "delete from new_order where order_id=" . $id;
     mysqli_query($con, $sql1);
-    $sql2 = "insert into old_order(order_id,product_id,user_id,total_amt,payment_mode,order_status,order_date,delivery_date) values($id,'$pname','$uid',$totamt,'$pay','$os','$od','$dt')";
+    $sql2 = "insert into old_order(order_id,product_name,user_id,total_amt,payment_mode,order_status,order_date,delivery_date) values($id,'$pname','$uid',$totamt,'$pay','$os','$od','$dt')";
     mysqli_query($con, $sql2);
     echo "Done";
 } else if ($_GET['val'] == "update") {
@@ -260,5 +289,11 @@ if ($_GET['val'] == "add_bed") {
     ';
 } else if ($_GET['val'] == "logout") {
     logout();
+} else if ($_GET['val'] == "deleteproduct") {
+    $con=  mysqli_connect("localhost", "root", "", "sj_database");
+    $pid = $_GET['id'];
+    $tbl = $_GET['tblname'];
+    $qry = mysqli_query($con,"delete from $tbl where product_id='$pid'");
+    header("location:admin_dashboard.php");
 }
 ?>

@@ -102,7 +102,7 @@ if (isset($_SESSION['user'])) {
                                             <h3>Pay using Net Banking</h3><br><br>
                                             <form method="POST" action="logic.php?val=bankredirect" >
                                                 <select name="bank">
-                                                    <option  value="bob">Bank of Baroda</option>
+                                                    <option  value="bankofbaroda">Bank of Baroda</option>
                                                     <option  value="sbi">State Bank of India</option>
                                                     <option  value="hdfc">HDFC Bank</option>
                                                    

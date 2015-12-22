@@ -103,7 +103,7 @@ if (isset($_SESSION['user'])) {
                                 $_SESSION['ccart'] = unserialize(serialize($_SESSION['cart']));
                                 $_SESSION['s'] = 0;
                                 $index = 0;
-                                $tpid='';
+                                $tpname = '';
                                 for ($i = 0; $i < count($_SESSION['ccart']); $i++) {
                                     $_SESSION['s'] += $_SESSION['ccart'][$i]->price * $_SESSION['ccart'][$i]->quantity;
                                     ?>
@@ -113,9 +113,9 @@ if (isset($_SESSION['user'])) {
                                                 <img src="<?php echo $_SESSION['ccart'][$i]->images; ?>" height="100" width="100" class="img-responsive" alt="">
                                             </div>
                                             <div class="cart-item-info">
-                                                <?php $productid = $_SESSION['ccart'][$i]->id;
-                                                $productqty=$_SESSION['ccart'][$i]->quantity;
-                                                $tpid=$tpid.$productid.'|'.$productqty.',';?>
+                                                <?php $productname = $_SESSION['ccart'][$i]->name;
+                                                $tpname = $tpname . $productname . ',';
+                                                ?>
                                                 <h3><a href="#"><?php echo $_SESSION['ccart'][$i]->name; ?></a></h3>
                                                 <p></p>
                                                 <ul class="qty">
@@ -141,24 +141,24 @@ if (isset($_SESSION['user'])) {
                             }
                             ?>
                             <center>
-                                
+
                             </center>
                         </div>
                     </div>
                     <div class="col-md-3 cart-total">
                         <div><font color="df4782"><h2><b>Invoice</b></h2></font></div><br>                           
-                                    <span>FullName: </span><?php echo '' . $_SESSION['u_fname'] . ' ' . $_SESSION['u_lname']; ?><br>
-                                    <span>Contact No: </span><?php echo '' . $_SESSION['u_phone']; ?><br>
-                                    <span>Shipping Address: </span><?php echo '' . $_SESSION['u_address']; ?><br>
-                                    <span>Pincode : </span><?php echo '' . $_SESSION['u_pincode']; ?><br>
-                                    <span>To Pay:</span><b><?php echo @$_SESSION['totamt'] ?></b><br><br><br>
+                        <span>FullName: </span><?php echo '' . $_SESSION['u_fname'] . ' ' . $_SESSION['u_lname']; ?><br>
+                        <span>Contact No: </span><?php echo '' . $_SESSION['u_phone']; ?><br>
+                        <span>Shipping Address: </span><?php echo '' . $_SESSION['u_address']; ?><br>
+                        <span>Pincode : </span><?php echo '' . $_SESSION['u_pincode']; ?><br>
+                        <span>To Pay:</span><b><?php echo @$_SESSION['totamt'] ?></b><br><br><br>
                         <a class="continue" href="index.php">Continue Shopping</a>
                     </div>
 
                 </div>
             </div>
         </div>
-        <?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
     </body>
     </html>		
     <?php
@@ -166,12 +166,12 @@ if (isset($_SESSION['user'])) {
 // Save New Order
 $userid = $_SESSION['u_id'];
 $amount = $_SESSION['totamt'];
-mysqli_query($con, 'insert into new_order(product_id,user_id,total_amt,payment_mode,order_status,order_date)
-    values("'.$productid.'","' . $userid . '","' . $amount . '","COD","Under Process","' . date('Y-m-d') . '")');
+mysqli_query($con, 'insert into new_order(product_name,user_id,total_amt,payment_mode,order_status,order_date)
+    values("' . $tpname . '","' . $userid . '","' . $amount . '","COD","Under Process","' . date('Y-m-d') . '")');
 $ordersid = mysqli_insert_id($con);
 unset($_SESSION['cart']);
 unset($_SESSION['totamt']);
-if(!isset($_SESSION['user'])){
-     header("location:404.php");
+if (!isset($_SESSION['user'])) {
+    header("location:404.php");
 }
 ?>

@@ -1,8 +1,9 @@
 <?php
 
 class Item{
-    var $id;
+    var $isbn;
     var $name;
+    var $authorname;
     var $price;
     var $quantity ;
     var $images ;

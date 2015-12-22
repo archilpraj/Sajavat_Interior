@@ -27,9 +27,8 @@ function update($id, $name, $cnct, $dob, $gend, $add, $dateoc, $disdia, $med, $c
 
 ;
 
-function delete($id) {
-    $qry = mysql_query("delete from sta_archil where ID=" . $id);
-    menu();
+function delete($id,$tbl) {
+    $qry = mysql_query("delete from $tbl where product_id=" . $id);
 }
 
 ;
@@ -49,6 +48,7 @@ function disp_beds() {
         echo "<td><center>" . $row['product_color'] . "</center></td>";
         echo "<td><center>" . $row['product_material'] . "</center></td>";
         echo "<td><center>" . $row['bed_type'] . "</center></td>";
+        echo "<td><center><a href='funcheck.php?val=delete&id=" . $row['product_id'] . "'>DELETE<center></a></td>";
         echo "</tr>";
     }
 }

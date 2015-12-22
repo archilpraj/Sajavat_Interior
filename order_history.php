@@ -22,9 +22,12 @@ if (isset($_SESSION['user'])) {
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
             <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-          
+
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="js/jquery.min.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="alert_master/dist/sweetalert.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="alert_master/dist/sweetalert.css">
             <!-- Custom Theme files -->
             <link href="css/style.css" rel='stylesheet' type='text/css' />
             <!-- Custom Theme files -->
@@ -49,6 +52,124 @@ if (isset($_SESSION['user'])) {
                         mainClass: 'my-mfp-zoom-in'
                     });
                 });
+                function aler(status)
+                {
+                    swal({
+                        title: "Order Manupulation",
+                        text: status,
+                        type: "success",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Ok!",
+                        closeOnConfirm: false
+                    },
+                    function () {
+                        window.location.reload(true);
+                    });
+                }
+                function checkoption()
+                {
+                    var value = document.getElementById('opt').value;
+                    var ord_element = document.getElementById('ord_status');
+                    var ord_status = ord_element.textContent;
+                    //alert(value);
+                    if (ord_status == "Completed")
+                    {
+                        if (value == "Cancel Order")
+                        {
+
+                            swal({
+                                title: "Order Cancel",
+                                text: "You Cannot Cancel This Order.Its Already Delivered",
+                                type: "error",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Ok!",
+                                closeOnConfirm: true
+                            });
+                        }
+                        else if (value == "Refund")
+                        {
+                            var id = document.getElementById("rad").value;
+                            //var id1 = a.name;
+                            //var ord = document.getElementById("order2").value;
+                            var xmlhttp = new XMLHttpRequest();
+                            xmlhttp.open("GET", "changestatus.php?val=changestatus&id=" + id + "&status=Refund", true);
+                            xmlhttp.onreadystatechange = function ()
+                            {
+                                if (xmlhttp.readyState == 4 && status == 200)
+                                {
+                                    var status = xmlhttp.responseText;
+                                    aler(status);
+                                }
+                            }
+                            xmlhttp.send();
+                        }
+                        else if (value == "Replace Product")
+                        {
+                            var id = document.getElementById("rad").value;
+                            //var id1 = a.name;
+                            //var ord = document.getElementById("order2").value;
+                            var xmlhttp = new XMLHttpRequest();
+                            xmlhttp.open("GET", "changestatus.php?val=changestatus&id=" + id + "&status=Replace", true);
+                            xmlhttp.onreadystatechange = function ()
+                            {
+                                if (xmlhttp.readyState == 4 && status == 200)
+                                {
+                                    var status = xmlhttp.responseText;
+                                    aler(status);
+                                }
+                            }
+                            xmlhttp.send();
+                        }
+                    }
+                    else if (ord_status == "Under Process")
+                    {
+                        if (value == "Cancel Order")
+                        {
+
+                            var id = document.getElementById("rad").value;
+                            //alert(id);
+                            //var id1 = a.name;
+                            //var ord = document.getElementById("order2").value;
+                            var xmlhttp = new XMLHttpRequest();
+                            xmlhttp.open("GET", "changestatus.php?val=changestatus&id=" + id + "&status=Cancel", true);
+                            xmlhttp.onreadystatechange = function ()
+                            {
+                                //alert("1");
+                                if (xmlhttp.readyState == 4 && status == 200)
+                                {
+                                    alert("2");
+                                    var status = xmlhttp.responseText;
+                                    aler(status);
+                                    alert(status);
+                                }
+                            }
+                            xmlhttp.send();
+                        }
+
+                        else if (value == "Refund")
+                        {
+                            swal({
+                                title: "Order Refund",
+                                text: "You Cannot Request For Refund Until It Is Delivered",
+                                type: "error",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Ok!",
+                                closeOnConfirm: true
+                            });
+                        }
+                        else if (value == "Replace Product")
+                        {
+                            swal({
+                                title: "Order Replace",
+                                text: "You Cannot Request For Replace Until It Is Delivered",
+                                type: "error",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Ok!",
+                                closeOnConfirm: true
+                            });
+                        }
+                    }
+                }
             </script>
 
             <!----details-product-slider--->
@@ -94,71 +215,70 @@ if (isset($_SESSION['user'])) {
                 <div class="content_box">
                     <div class="container">
                         <center>
-                             <div><font color="df4782"><h2><b>Order History</b></h2></font></div><br>
+                            <div><font color="df4782"><h2><b>Order History</b></h2></font></div><br>
+                            <?php
+                            require 'dbhelp.php';
+                            require 'item.php';
+                            $result_new = mysqli_query($con, "select * from new_order where user_id='" . $_SESSION['user'] . "'");
+                            $result_old = mysqli_query($con, "select * from old_order where user_id='" . $_SESSION['user'] . "'");
+                            ?>
                             <form method="POST" action="#" >
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Select</th>
-                                            <th>Order ID</th>
+                                            <th>Option</th>
                                             <th>Product Name</th>
-                                            <th>Delivery Status</th>
+                                            <th>Payment Mode</th>
+                                            <th>Total Amount</th>
+                                            <th>Order Date</th>
+                                            <th>Order Status</th>
+                                            <th>Delivery Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><input type="radio"></td>
-                                            <td>121212121</td>
-                                            <td>Bed King Size</td>
-                                            <td>Delivered</td>
-                                        </tr>
+                                        <?php while ($new_order = mysqli_fetch_object($result_new)) { ?>
+                                            <tr>
+                                                <td><input type="radio" id="rad" value="<?php echo $new_order->order_id; ?>"></td>
+                                                <td><?php echo $new_order->product_name; ?></td>
+                                                <td><?php echo $new_order->payment_mode; ?></td>
+                                                <td><?php echo $new_order->total_amt; ?></td>
+                                                <td><?php echo $new_order->order_date; ?></td>
+                                                <td id="ord_status"><?php echo $new_order->order_status; ?></td>
+                                                <td></td>
+                                            </tr>    
+                                        <?php } ?>
+                                        <?php while ($old_order = mysqli_fetch_object($result_old)) { ?>
+                                            <tr>
+                                                <td><input type="radio" id="rad" value="<?php echo $old_order->order_id; ?>"></td>
+                                                <td><?php echo $old_order->product_name; ?></td>
+                                                <td><?php echo $old_order->payment_mode; ?></td>
+                                                <td><?php echo $old_order->total_amt; ?></td>
+                                                <td><?php echo $old_order->order_date; ?></td>
+                                                <td id="ord_status"><?php echo $old_order->order_status; ?></td>
+                                                <td><?php echo $old_order->delivery_date; ?></td>
+                                            </tr>    
+                                        <?php } ?>
                                     </tbody>
                                 </table>
-
-
                                 <br><br>
                                 <div>
-                                    <label>Select Action:</label>  
-                                    <select>
+                                    <label>Select Action:</label>
+                                    <select id="opt" >
                                         <option>Cancel Order</option>
-                                        <option>View Bill</option>
                                         <option>Refund</option>
                                         <option>Replace Product</option>
                                     </select></div>
                                 <br>
 
-                               <input type="button" class="btn btn-success" value="Submit"><br><br><br>
+                                <input type="button" class="btn btn-success" value="Submit" id="reqbtn" onclick="checkoption()"><br><br><br>
                             </form>
                         </center> 
                     </div>
                 </div>
             </div>
-        
-        <div class="container">
-            <div class="instagram_top">
-                <div class="instagram text-center">
-                    <h3>Our Collections</h3>
-                </div>
-                <ul class="instagram_grid">
-                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i1.jpg" class="img-responsive"alt=""/></a></li>
-                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i2.jpg" class="img-responsive" alt=""/></a></li>
-                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i3.jpg" class="img-responsive" alt=""/></a></li>
-                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i4.jpg" class="img-responsive" alt=""/></a></li>
-                    <li><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i5.jpg" class="img-responsive" alt=""/></a></li>
-                    <li class="last_instagram"><a class="popup-with-zoom-anim" href="#small-dialog1"><img src="images/i6.jpg" class="img-responsive" alt=""/></a></li>
-                    <div class="clearfix"></div>
-                    <div id="small-dialog1" class="mfp-hide">
-                        <div class="pop_up">
-                            <h4>A Sample Photo Stream</h4>
-                            <img src="images/i_zoom.jpg" class="img-responsive" alt=""/>
-                        </div>
-                    </div>
-                </ul>
-            </div>
 
-        </div>
-        <?php include 'footer.php'; ?>
-    </body>
+            <?php include 'footer.php'; ?>
+        </body>
     </html>		
     <?php
 } else {

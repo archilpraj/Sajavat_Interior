@@ -1,12 +1,14 @@
-      <div class="footer">
+ <div class="footer">
             <div class="container">
 
                 <div class="footer-grid">
                     <h3>Our Account</h3>
                     <ul class="list1">
                         <li><a href="index.php">Home</a></li>
+                        <?php if (isset($_SESSION['user'])) {?>
                         <li><a href="login.php">Your Account</a></li>
-                        <li><a href="contact.php">Personal information</a></li>
+                            
+                        <li><a href="order_history.php">Order History</a></li><?php }?>
                     </ul>
                 </div>
                 <div class="footer-grid">
