@@ -196,7 +196,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Bed Side Tables</h3>
+                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Bed Side Table</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-4"><label class = "control-label">Product Id</label>
                                         <div class = "input-group">
-                                            <span class="input-group-addon " id="basic-addon1">P_BED</span>
+                                            <span class="input-group-addon " id="basic-addon1">bd_st_td</span>
                                             <input type="text" name="product_id" class="form-control " placeholder="Product Id" aria-describedby="basic-addon1" required>
                                         </div></div>
                                     <div class="col-md-4">
@@ -267,10 +267,10 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label class="control-label">Product Material</label>
-                                        <select name="product_material" class="form-control" style="width:200px;" required><option>Mango Wood</option><option>Acacia Wood</option><option>Engineered Wood</option></select>
+                                        <select name="product_material" class="form-control" style="width:200px;" required><option>Sheesham Wood</option><option>Engineered Wood</option><option>Acacia Wood</option><option>Mango Wood</option><option>Teak Wood</option><option>Recycled Wood</option><option>Metal</option></select>
                                     </div>
                                     <div class="col-md-3"><label class="control-label">Product Storage</label>
-                                        <select name="product_storage" style="width:200px;" required><option>Yes</option><option>No</option></select>
+                                        <select name="product_storage" class="form-control" style="width:200px;" required><option>Yes</option><option>No</option></select>
                                     </div>
                                     <div class="col-md-3">
                                         <label class="control-label">Product Table Top Shape</label>
@@ -299,7 +299,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label class="control-label">Product Table Material</label>
-                                        <select name="tmaterial" class="form-control" style="width:300px;" required><option>Mango Wood</option><option>Acacia Wood</option><option>Engineered Wood</option></select>
+                                        <select name="tmaterial" class="form-control" style="width:300px;" required><option>Sheesham Wood</option><option>Engineered Wood</option><option>Acacia Wood</option><option>Mango Wood</option><option>Teak Wood</option><option>Recycled Wood</option><option>Metal</option></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Product Color</label>

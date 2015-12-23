@@ -16,7 +16,7 @@ if (!isset($_SESSION['admin_uname'])) {
             <meta name="description" content="">
             <meta name="author" content="">
 
-            <title>Add Bookshelf Disp Unit Panel</title>
+            <title>Add Bookshelf Display Unit Panel</title>
 
             <!-- Bootstrap Core CSS -->
             <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -182,7 +182,7 @@ if (!isset($_SESSION['admin_uname'])) {
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                                    Bookshelf Disp Unit <small>Add In Inventory</small>
+                                    Bookshelf Display Unit <small>Add In Inventory</small>
                                 </h1>
                                 <ol class="breadcrumb">
                                     <li class="active">
@@ -196,7 +196,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Disp Units</h3>
+                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Display Unit</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -207,6 +207,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-4"><label class = "control-label">Product Id</label>
                                         <div class = "input-group">
+                                            <span class="input-group-addon " id="basic-addon1">P_DIS</span>
                                             <input type="text" name="product_id" class="form-control " placeholder="Product Id" required>
                                         </div></div>
                                     <div class="col-md-4">
@@ -269,11 +270,18 @@ if (!isset($_SESSION['admin_uname'])) {
                                         <select name="assembly" class="form-control" style="width:300px;"><option>Carpenter Assembly</option><option>Self Assembly</option><option>No Assembly Required</option></select>
                                     </div>
                                 </div>
+                                <label><h3>Shape</h3></label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Product Shape</label>
+                                        <select name="shape" class="form-control" style="width:300px;" required><option>Rectangular</option><option>Square</option></select>
+                                    </div>
+                                </div>
                                 <label><h3>Material,Storage And Floor Standing</h3></label>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label class="control-label">Product Material Type</label>
-                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Mango Wood</option><option>Engineered Wood</option></select>
+                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Engineered Wood</option><option>Acacia Wood</option><option>Mango Wood</option><option>Teak Wood</option><option>Recycled Wood</option><option>Metal</option></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Floor Standing</label>
@@ -288,7 +296,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label class="control-label">With Storage</label>
-                                        <select  name="with_storage" class="form-control" style="width:200px;" required><option>Yes</select>
+                                        <select  name="with_storage" class="form-control" style="width:200px;" required><option>Yes</option><option>No</option></select>
                                     </div>
                                     <div class="col-md-4"><label class="control-label">Product Size</label>
                                         <input type="number"  name="size" maxlength="200" class="form-control" style="width:200px;" required>

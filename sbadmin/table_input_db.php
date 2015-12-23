@@ -16,7 +16,7 @@ if (!isset($_SESSION['admin_uname'])) {
             <meta name="description" content="">
             <meta name="author" content="">
 
-            <title>Add Beds Panel</title>
+            <title>Add Table Panel</title>
 
             <!-- Bootstrap Core CSS -->
             <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -182,7 +182,7 @@ if (!isset($_SESSION['admin_uname'])) {
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                                    Beds <small>Add In Inventory</small>
+                                    Table <small>Add In Inventory</small>
                                 </h1>
                                 <ol class="breadcrumb">
                                     <li class="active">
@@ -196,7 +196,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Beds</h3>
+                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Table</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-4"><label class = "control-label">Product Id</label>
                                         <div class = "input-group">
-                                            <span class="input-group-addon " id="basic-addon1">P_BED</span>
+                                            <span class="input-group-addon " id="basic-addon1">P_TABLE</span>
                                             <input type="text" name="product_id" class="form-control " placeholder="Product Id" aria-describedby="basic-addon1" required>
                                         </div></div>
                                     <div class="col-md-4">
@@ -263,31 +263,6 @@ if (!isset($_SESSION['admin_uname'])) {
                                         <input type="number"  name="product_stock" maxlength="20" class="form-control" style="width:250px;" required>
                                     </div>
                                 </div>
-                                <label><h3>Height,Width,Depth And Color</h3></label>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label class="control-label">Product Height</label>
-                                        <input type="number"  name="product_h" maxlength="200" class="form-control" style="width:200px;" required>
-                                    </div>
-                                    <div class="col-md-3"><label class="control-label">Product Width</label>
-                                        <input type="number"  name="product_w" maxlength="200" class="form-control" style="width:200px;" required>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="control-label">Product Depth</label>
-                                        <input type="number"  name="product_d" maxlength="200" class="form-control" style="width:200px;" required>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="control-label">Product Color</label>
-                                        <input type="text"  name="product_color" class="form-control" style="width:200px;" required>
-                                    </div>
-                                </div>
-                                <label><h3>Warranty</h3></label>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label class="control-label">Product Warranty</label>
-                                        <input type="text" name="product_warranty" class="form-control" style="width:200px;" required>
-                                    </div>
-                                </div>
                                 <label><h3>Assembly Type</h3></label>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -295,19 +270,49 @@ if (!isset($_SESSION['admin_uname'])) {
                                         <select name="assembly" class="form-control" style="width:300px;"><option>Carpenter Assembly</option><option>Manual Assembly</option></select>
                                     </div>
                                 </div>
-                                <label><h3>Material,Storage And Bed Type</h3></label>
+                                <label><h3>Product Colour, Storage Type And Sitting Capacity</h3></label>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="control-label">Product Material Type</label>
-                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Engineered Wood</option></select>
+                                        <label class="control-label">Product Colour</label>
+                                        <input type="text"  name="colour" class="form-control" style="width:250px;" required>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="control-label">Product Storage</label>
-                                        <select name="storage" class="form-control" style="width:300px;"><option>Yes</option><option>No</option></select>
+                                        <label class="control-label">Storage Type</label>
+                                        <input type="text" name="storage_type" class="form-control" style="width:250px;" required>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="control-label">Bed Type</label>
-                                        <select name="bed_type" class="form-control" style="width:300px;"><option>King</option><option>Queen</option></select>
+                                        <label class="control-label">Sitting Capacity</label>
+                                        <input type="text"  name="sitting_capacity" class="form-control" style="width:250px;" required>
+                                    </div>
+                                </div>
+                                <label><h3>Product Material, Shape And Size</h3></label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Material</label>
+                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Engineered Wood</option><option>Acacia Wood</option><option>Mango Wood</option><option>Teak Wood</option><option>Recycled Wood</option><option>Metal</option></select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Shape</label>
+                                        <input type="text" name="shape" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Size</label>
+                                        <input type="number"  name="size" maxlength="20" class="form-control" style="width:250px;" required>
+                                    </div>
+                                </div>
+                                <label><h3>Style, Table Shape And Table Material</h3></label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Product Style</label>
+                                        <input type="text"  name="style" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Table Shape</label>
+                                        <input type="text" name="table_shape" class="form-control" style="width:250px;" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label">Table Material</label>
+                                        <input type="text"  name="table_material" class="form-control" style="width:250px;" required>
                                     </div>
                                 </div>
                                 <label class="clearfix"></label>

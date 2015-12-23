@@ -16,7 +16,7 @@ if (!isset($_SESSION['admin_uname'])) {
             <meta name="description" content="">
             <meta name="author" content="">
 
-            <title>Add Beds Panel</title>
+            <title>Add Bed Panel</title>
 
             <!-- Bootstrap Core CSS -->
             <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -182,7 +182,7 @@ if (!isset($_SESSION['admin_uname'])) {
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">
-                                    Beds <small>Add In Inventory</small>
+                                    Bed <small>Add In Inventory</small>
                                 </h1>
                                 <ol class="breadcrumb">
                                     <li class="active">
@@ -196,7 +196,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Beds</h3>
+                                            <h3 class="panel-title"><i class="fa fa-th fa-fw"></i> Add Bed</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -292,14 +292,14 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label class="control-label">Product Assembly Type</label>
-                                        <select name="assembly" class="form-control" style="width:300px;"><option>Carpenter Assembly</option><option>Manual Assembly</option></select>
+                                        <select name="assembly" class="form-control" style="width:300px;"><option>Carpenter Assembly</option><option>Self Assembly</option><option>No Assembly Required</option></select>
                                     </div>
                                 </div>
                                 <label><h3>Material,Storage And Bed Type</h3></label>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label class="control-label">Product Material Type</label>
-                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Engineered Wood</option></select>
+                                        <select name="material" class="form-control" style="width:300px;"><option>Sheesham Wood</option><option>Engineered Wood</option><option>Acacia Wood</option><option>Mango Wood</option><option>Teak Wood</option><option>Recycled Wood</option><option>Metal</option></select>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Product Storage</label>
@@ -307,7 +307,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                     </div>
                                     <div class="col-md-4">
                                         <label class="control-label">Bed Type</label>
-                                        <select name="bed_type" class="form-control" style="width:300px;"><option>King</option><option>Queen</option></select>
+                                        <select name="bed_type" class="form-control" style="width:300px;"><option>Queen</option><option>King</option><option>Single</option></select>
                                     </div>
                                 </div>
                                 <label class="clearfix"></label>
