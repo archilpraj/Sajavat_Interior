@@ -36,6 +36,44 @@ if ($_GET['val'] == "add_bed") {
         echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_bed'>DELETE</a><center></td>";
         echo "</tr>";
     }
+} else if ($_GET['val'] == "disp_bed") {
+    //disp_beds();
+    $connection_obj = mysqli_connect("localhost", "root", "", "sj_database") or die(mysql_error());
+    $sql = "select * from product_bed";
+    if (isset($_GET['type'])) {
+        if ($_GET['type'] == 'pid') {
+            $sql = $sql . " order by product_name";
+        }
+    }
+    $qry = mysqli_query($connection_obj, $sql);
+
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['product_id'] . "</center></td>";
+        echo "<td><center>" . $row['product_name'] . "</center></td>";
+        echo "<td><center><img height='75px' width='150px' src=../" . $row['product_img'] . " /></center></td>";
+        echo "<td><center>" . $row['product_price'] . "</center></td>";
+        echo "<td><center>" . $row['product_stock'] . "</center></td>";
+        echo "<td><center>" . $row['product_color'] . "</center></td>";
+        echo "<td><center>" . $row['product_material'] . "</center></td>";
+        echo "<td><center>" . $row['bed_type'] . "</center></td>";
+        echo "<td><center><a href='update.php?id=" . $row['product_id'] . "&tblname=product_bed&stock=" . $row['product_stock'] . "&pname=" . $row['product_name'] . "'>EDIT<center></a></td>";
+        echo "<td><center><a href='admin_func_check.php?val=deleteproduct&id=" . $row['product_id'] . "&tblname=product_bed'>DELETE</a><center></td>";
+        echo "</tr>";
+    }
+} else if ($_GET['val'] == "user") {
+    //disp_bed_side_table();
+    $connection_obj = mysqli_connect("localhost", "root", "", "sj_database") or die(mysql_error());
+    $qry = mysqli_query($connection_obj, "select * from user");
+
+    while ($row = mysqli_fetch_array($qry)) {
+        echo "<tr>";
+        echo "<td><center>" . $row['user_id'] . "</center></td>";
+        echo "<td><center>" . $row['user_firstname'] . " " . $row['user_lastname'] . "</center></td>";
+        echo "<td><center>" . $row['user_email'] . "</center></td>";
+        echo "<td><center>" . $row['user_phone'] . "</center></td>";
+        echo "</tr>";
+    }
 } else if ($_GET['val'] == "disp_bed_side_table") {
     //disp_bed_side_table();
     $connection_obj = mysqli_connect("localhost", "root", "", "sj_database") or die(mysql_error());
@@ -290,10 +328,10 @@ if ($_GET['val'] == "add_bed") {
 } else if ($_GET['val'] == "logout") {
     logout();
 } else if ($_GET['val'] == "deleteproduct") {
-    $con=  mysqli_connect("localhost", "root", "", "sj_database");
+    $con = mysqli_connect("localhost", "root", "", "sj_database");
     $pid = $_GET['id'];
     $tbl = $_GET['tblname'];
-    $qry = mysqli_query($con,"delete from $tbl where product_id='$pid'");
+    $qry = mysqli_query($con, "delete from $tbl where product_id='$pid'");
     header("location:admin_dashboard.php");
 }
 ?>

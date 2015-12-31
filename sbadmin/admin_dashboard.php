@@ -130,6 +130,10 @@ if (!isset($_SESSION['admin_uname'])) {
                     {
                         document.getElementById("p_name").innerHTML = "Old Orders";
                         document.getElementById("t_head").innerHTML = "<tr><th>Order ID</th><th>Product Name</th><th>User ID</th><th>Payment Mode</th><th>Order Date</th><th>Total Amount</th><th>Order Status</th><th>Delivery Date</th></tr>";
+                    }else if (req == "user")
+                    {
+                        document.getElementById("p_name").innerHTML = "User Details";
+                        document.getElementById("t_head").innerHTML = "<tr><th>User ID</th><th>User Name</th><th>User Email</th><th>Contact</th></tr>";
                     }
                     //alert(req);
                     var xmlhttp;
@@ -231,7 +235,7 @@ if (!isset($_SESSION['admin_uname'])) {
                                 <a data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> View Database <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="demo" class="collapse">
                                     <li>
-                                        <a href="admin_usertable.php"><i class="fa fa-fw fa-user"></i> Users</a>
+                                        <a href="#" name="user" onclick="disp(this.name)"><i class="fa fa-fw fa-user" ></i> Users</a>
                                     </li>
                                     <li>
                                         <a data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-box"></i> Products <i class="fa fa-fw fa-caret-down"></i></a>

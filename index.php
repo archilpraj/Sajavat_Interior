@@ -5,7 +5,7 @@ include 'dbhelp.php'
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Sajavat Interiors | Home</title>
+        <title>Sajavat Interior | Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -117,7 +117,7 @@ include 'dbhelp.php'
                     <div class="bannertop_box">
                         <?php include 'session_set.php'; ?>
                         <div class="welcome_box">
-                            <h3>Welcome to Sajavat Interior</h3>
+                            <h3>Welcome to Sajavat Interiors</h3>
                             <p>This Is How We Do It. Bringing Furniture You Love With Love</p>
                         </div>
                     </div>

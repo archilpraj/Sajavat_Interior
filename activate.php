@@ -152,7 +152,7 @@ if (isset($_SESSION['user'])) {
 
                                             <div>
                                                 <span>Code</span>
-                                                <input type="text" name="txtcode" id="txtcode" required />
+                                                <input type="text" name="txtcode" id="txtcode" required placeholder="Check Your Email For Code" />
                                             </div>
 
                                             <div>

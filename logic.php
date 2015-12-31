@@ -63,9 +63,9 @@ if ($_GET['val'] == 'register') {
     $code = rand(0, 9999999999);
     $mail->Body = "Your Acivation code is: " . $code;
     if (!$mail->send()) {
-        echo "Error not sent " + $mail->ErrorInfo;
+        header("location:retrieve.php");
     } else {
-        echo "sent";
+        header("location:activate.php");
     }
     $sql = "update user set user_vcode='" . $code . "' where user_email='" . $email . "'";
     mysqli_query($con, $sql);
